@@ -1,0 +1,56 @@
+<html>
+<head>
+<style>
+#context {
+	width: 300px;
+	height: 400;
+}
+</style>
+</head>
+
+<body>
+
+	<p>欢迎来到这个简陋的后台</p>
+	<p>尝试添加 一项 经营项目 请选则一张本地图片 要求750宽 350高</p>
+	<p>并配一个标题和 一段介绍</p>
+	<input type="file" id="uploadimage">
+	<button id="submitimage">添加照片</button>
+	<p>此处添加标题</p>
+	<input id="title">
+	<p>此处添加介绍</p>
+	<textarea id="context"></textarea>
+	<br>
+	<button id="submitxiangmu">尝试添加</button>
+
+</body>
+
+<script>
+<!-- submit image here -->
+	document.getElementById('submitimage').addEventListener('click', function() {
+	var data = new FormData();
+	if(document.getElementById("uploadimage").files[0]!=null){
+		data.append('myimage', document.getElementById("uploadimage").files[0]);
+	// append other variables to data if you want: data.append('field_name_x', field_value_x);
+		$.ajax({
+			type : 'POST',
+			processData : false, // important
+			contentType : false, // important
+			data : data,
+			url : '/uploadimage',
+			dataType : 'json',
+			success : function(res) {		
+				mytripimageid =res.imageid;
+				alert(mytripimageid);
+				haveimage=true;
+				imageway="upload";
+				$.post('/getimagebyid',{imageid:mytripimageid}, function(res) {
+					document.getElementById("imagePreview").src = 'data:image/png;base64,'
+					+ res.image;			
+				});
+				}
+			});
+		}else{alert("please select a image!");}
+	});
+	</script>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</html>

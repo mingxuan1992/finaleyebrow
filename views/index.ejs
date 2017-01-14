@@ -1,0 +1,456 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>myEyebrow</title>
+<link rel="stylesheet" href="stylesheets/indexcss.css" type="text/css">
+</head>
+<style>
+@font-face {
+	font-family: 'Arimo-Bold';
+	src: url('../fonts/Arimo-Bold/Arimo-Bold.eot');
+	src: url('../fonts/Arimo-Bold/Arimo-Bold.woff') format('woff'),
+		url('../fonts/Arimo-Bold/Arimo-Bold.ttf') format('truetype'),
+		url('../fonts/Arimo-Bold/Arimo-Bold.svg') format('svg');
+}
+
+@font-face {
+	font-family: 'ChangaOne';
+	src: url('../fonts/ChangaOne/ChangaOne-Regular.eot');
+	src: url('../fonts/ChangaOne/ChangaOne-Regular.woff') format('woff'),
+		url('../fonts/ChangaOne/ChangaOne-Regular.ttf') format('truetype'),
+		url('../fonts/ChangaOne/ChangaOne-Regular.svg') format('svg');
+}
+
+@font-face {
+	font-family: 'Comfortaa-Regular';
+	src: url('../fonts/Comfortaa/Comfortaa-Regular.eot');
+	src: url('../fonts/Comfortaa/Comfortaa-Regular.woff') format('woff'),
+		url('../fonts/Comfortaa/Comfortaa-Regular.ttf') format('truetype'),
+		url('../fonts/Comfortaa/Comfortaa-Regular.svg') format('svg');
+}
+
+@font-face {
+	font-family: 'Opulence-JF';
+	src: url('../fonts/Opulence-JF/Opulence-JF.eot');
+	src: url('../fonts/Opulence-JF/Opulence-JF.ttf') format('truetype');
+}
+
+body {
+	background: url(../images/bg-header.gif) repeat-x top center,
+		url(../images/mytitle60.jpg) no-repeat top center;
+	background-color: #f5f2f1;
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+}
+
+#header {
+	margin: 0;
+	padding: 0;
+	height: 120px;
+}
+
+#header .title1 {
+	float: left;
+	display: block;
+	font-family: 'Opulence-JF';
+	font-size: 100px;
+	font-weight: normal;
+	height: 120px;
+	line-height: 120px;
+	width: 400px;
+	color: black;
+	padding: 0 0 0 150px;
+}
+
+#header .title1 a {
+	color: black;
+	text-align: center;
+	text-decoration: none;
+}
+
+#header .title2 {
+	float: left;
+	padding: 85px 0 0 230px;
+	opacity: 0.5;
+	font-family: 'ChangeOne';
+	font-size: 25px;
+	margin: 0;
+	color: white;
+	width: 324px;
+}
+
+#body {
+	margin: 0 auto;
+	padding: 0;
+	width: 1160px;
+}
+
+#body .left {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 240px;
+	height: 400px;
+}
+
+#body .left .leftbuttonhome {
+	text-transform: uppercase;
+	font-size: 20px;
+	opacity: 0.7;
+	width: 150px;
+	height: 30px;
+	background-color: black;
+	color: white;
+	margin: 50px 0 0 80px;
+	border-radius: 2px;
+	text-align: center;
+	line-height: 30px;
+	opacity: 0.7;
+	font-size: 20px;
+}
+
+#body .left .leftbuttonhome:hover {
+	box-shadow: 0px 0px 15px 20px black;
+}
+
+#body .left .leftbutton {
+	text-transform: uppercase;
+	font-size: 20px;
+	opacity: 0.7;
+	width: 150px;
+	height: 30px;
+	color: white;
+	background-color: #658e95;
+	margin: 30px 0 0 80px;
+	border-radius: 2px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 20px;
+}
+
+#body .left .leftbutton:hover {
+	box-shadow: 0px 0px 10px 15px #658e95;
+}
+
+#body .right {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 920px;
+	height: 400px;
+	float: left;
+}
+
+#body .right .imagecontainer {
+	margin: 20px 60px 0;
+	border: solid;
+	border-color: #658e95;
+	height: 350px;
+	width: 750px;
+}
+
+#body .right .imagecontainer .wrap {
+	opacity: 0.9;
+	height: 350px;
+	width: 750px;
+	overflow: hidden;
+}
+
+#body .right .imagecontainer #wrap-list {
+	width: 9999px;
+	transform: translate3d(0, 0, 0);
+	transition-delay: .3s;
+	transition: ease;
+}
+
+#body .right .imagecontainer #wrap-list img {
+	float: left;
+	width: 750px;
+	height: 350px;
+}
+
+#body .right .imagecontainer .wrap #leftbutton {
+	position: absolute;
+	margin: 140px 0 0 0;
+}
+
+#body .right .imagecontainer .wrap #leftbutton:hover {
+	box-shadow: 0px 0px 20px 25px pink;
+	background-color: pink;
+}
+
+#body .right .imagecontainer .wrap #rightbutton {
+	position: absolute;
+	margin: 140px 0 0 720px;
+}
+
+#body .right .imagecontainer .wrap #rightbutton:hover {
+	box-shadow: 0px 0px 20px 25px pink;
+	background-color: pink;
+}
+
+#body #rightunder {
+	margin: 0 auto 20px;
+	padding: 10px 0 0 0;
+	width: 1060px;
+	height: 30px;
+	border-top: 2px solid #658e95;
+	border-bottom: 2px solid #658e95;
+	box-shadow: 0 0 7px 0px #658e95 inset;
+	overflow: hidden;
+	transform: translate3d(0, 0, 0);
+	transition-delay: .3s;
+	transition: ease;
+}
+
+#body #rightunder #down {
+	margin: 0 auto;
+	width: 50px;
+}
+
+#body #rightunder #down #downCanvas:hover {
+	box-shadow: 0px 0px 20px 25px pink;
+	background-color: pink;
+}
+
+#body #rightunder .chooseboardcontainer {
+	margin: 10px 0 0 55px;
+	padding: 0;
+	width: 960px;
+	height: 230px;
+	box-shadow: 0 0 7px #658e95;
+	float: left;
+}
+
+#body #rightunder .chooseboard {
+	margin: 7px;
+	float: left;
+	width: 946px;
+	height: 216px;
+	padding: 0;
+}
+
+#body #rightunder .chooseboard p {
+	height: 196px;
+	width: 40px;
+	margin: 0;
+	padding: 20px 0 0 0;
+	font-size: 28px;
+	background-color: #658e95;
+	text-align: center;
+	color: white;
+}
+
+#body #rightunder .chooseboard p:hover {
+	box-shadow: 0 0 7px #658e95;
+}
+
+#foot {
+	float: left;
+	margin: 0;
+	width: 100%;
+	height: 180px;
+	background-color: #658e95;
+}
+
+#foot #contactinfo {
+	opacity: 0.5;
+	float: right;
+	margin: 0 50px 0 0;
+	width: 300px;
+	height: 80px;
+	padding: 100px 0 0 0;
+}
+
+#foot #contactinfo p {
+	margin: 0;
+	width: 300px;
+	height: 20px;
+	color: white;
+}
+</style>
+<body>
+	<div id="header">
+		<div class="title1">
+			<a>My.Eyebrow</a>
+		</div>
+		<div class="title2">
+			<a>新加坡SCK悦研国际美妆</a>
+		</div>
+	</div>
+
+
+	<div id="body">
+		<div class="left">
+			<div class="leftbuttonhome" id="hometag">Home</div>
+			<div class="leftbutton" id="abouttag">About</div>
+			<div class="leftbutton">Promotion</div>
+			<div class="leftbutton">纹绣师简历</div>
+			<div class="leftbutton">Contact</div>
+		</div>
+		<div class="right">
+			<div class="imagecontainer">
+				<div class="wrap">
+					<div id="wrap-list">
+						<!--这里需要clone-->
+						<img src='/images/lunbo/showcase1.jpg' alt="eyebrowhomwpage1"
+							id="showcase1link"> <img src='/images/lunbo/showcase2.jpg'
+							id="showcase2link"> <img src='/images/lunbo/showcase3.jpg'
+							id="showcase3link"> <img src='/images/lunbo/showcase4.jpg'
+							id="showcase4link">
+
+
+					</div>
+					<div id="leftbutton">
+						<canvas id="leftCanvas" width="30" height="50"></canvas>
+					</div>
+					<div id="rightbutton">
+						<canvas id="rightCanvas" width="30" height="50"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="rightunder">
+			<div id="down">
+				<canvas id="downCanvas" width="50" height="30"> 
+ 				</canvas>
+			</div>
+			<div class="chooseboardcontainer" id="xiangmu">
+				<div class="chooseboard">
+					<p>经营项目</p>
+				</div>
+			</div>
+			<div class="chooseboardcontainer" id="kecheng">
+				<div class="chooseboard">
+					<p>学员课程</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div id="foot">
+		<div id="contactinfo">
+			<p>电话热线:11111111111</p>
+			<p>地址:新加坡某个地方</p>
+		</div>
+
+	</div>
+
+</body>
+
+<script>
+	var index = 0;
+	var width = 750;
+
+	document.getElementById('leftbutton').addEventListener('click', function() {
+		index = index - 1;
+		if (index < 0) {
+			index = 3;
+		}
+		dotransition();
+	});
+	document.getElementById('rightbutton').addEventListener('click',
+			function() {
+				index = index + 1;
+				if (index > 3) {
+					index = 0;
+				}
+				dotransition();
+			});
+
+	function dotransition() {
+		document.getElementById('wrap-list').style.cssText = "transform: translate3d(-"
+				+ index
+				* width
+				+ "px, 0, 0);	transition-delay: .3s;transition: ease; transition-duration:0.5s;";
+
+	}
+
+	document.getElementById('showcase1link').addEventListener('click',
+			function() {
+				window.location.assign('/link1');
+			});
+
+	function drawDown() {
+		var c = document.getElementById("downCanvas"), cxt = c.getContext("2d");
+		cxt.beginPath();
+		cxt.moveTo(5, 0);
+		cxt.lineTo(25, 15);
+		cxt.lineTo(45, 0);
+		cxt.lineWidth = 2;
+		cxt.strokeStyle = "#658e95";
+		cxt.lineCap = 'round';
+		cxt.lineJoin = "round";
+		cxt.stroke();
+		cxt.moveTo(5, 5);
+		cxt.lineTo(25, 20);
+		cxt.lineTo(45, 5);
+		cxt.lineWidth = 2;
+		cxt.strokeStyle = "#658e95";
+		cxt.lineCap = 'round';
+		cxt.lineJoin = "round";
+		cxt.stroke();
+	}
+	drawDown();
+
+	function drawLeft() {
+		var c = document.getElementById("leftCanvas"), cxt = c.getContext("2d");
+		cxt.beginPath();
+		cxt.moveTo(20, 5);
+		cxt.lineTo(10, 25);
+		cxt.lineTo(20, 45);
+		cxt.lineWidth = 2;
+		cxt.strokeStyle = "#658e95";
+		cxt.lineCap = 'round';
+		cxt.lineJoin = "round";
+
+		cxt.stroke();
+	}
+	drawLeft();
+
+	function drawRight() {
+		var c = document.getElementById("rightCanvas"), cxt = c
+				.getContext("2d");
+		cxt.beginPath();
+		cxt.moveTo(10, 5);
+		cxt.lineTo(20, 25);
+		cxt.lineTo(10, 45);
+		cxt.lineWidth = 2;
+		cxt.strokeStyle = "#658e95";
+		cxt.lineCap = 'round';
+		cxt.lineJoin = "round";
+		cxt.stroke();
+
+	}
+	drawRight();
+
+	document
+			.getElementById('downCanvas')
+			.addEventListener(
+					'click',
+					function() {
+						document.getElementById('rightunder').style.cssText = " height:505px;transition-delay: .3s;transition: ease; transition-duration:2s;";
+						document.getElementById('down').style.display = "none";
+					});
+	
+
+	document.getElementById('xiangmu').addEventListener('click',
+			function() {
+				window.location.assign('/xiangmupage');
+			});
+	document.getElementById('hometag').addEventListener('click',
+			function() {
+				window.location.assign('/');
+			});
+	document.getElementById('abouttag').addEventListener('click',
+			function() {
+				window.location.assign('/aboutpage');
+			});
+</script>
+
+
+</html>
