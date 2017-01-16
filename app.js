@@ -20,10 +20,6 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
 
 var index= require('./routes/index');
 app.get('/', index.index);
@@ -41,7 +37,8 @@ var houtai= require('./routes/houtai');
 app.get('/ygbhyrcdzgurl', houtai.gethoutaipage);
 
 var image =require('./routes/image');
-app.get('/uploadimage',image.uploadimage);
+app.post('/uploadimage',image.uploadimage);
+app.post('/getimagebyid',image.getimagebyid);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

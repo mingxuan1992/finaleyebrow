@@ -1,11 +1,19 @@
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style>
 #context {
 	width: 300px;
-	height: 400;
+	height: 400px;
+}
+
+#ItemPreview {
+	width: 750px;
+	height: 350px;
 }
 </style>
+<script
+	src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
 <body>
@@ -13,8 +21,11 @@
 	<p>欢迎来到这个简陋的后台</p>
 	<p>尝试添加 一项 经营项目 请选则一张本地图片 要求750宽 350高</p>
 	<p>并配一个标题和 一段介绍</p>
-	<input type="file" id="uploadimage">
+
+	<input type="file" id="imagetoupload">
 	<button id="submitimage">添加照片</button>
+	<br>
+	<img id="ItemPreview" src="" />
 	<p>此处添加标题</p>
 	<input id="title">
 	<p>此处添加介绍</p>
@@ -26,31 +37,46 @@
 
 <script>
 <!-- submit image here -->
-	document.getElementById('submitimage').addEventListener('click', function() {
-	var data = new FormData();
-	if(document.getElementById("uploadimage").files[0]!=null){
-		data.append('myimage', document.getElementById("uploadimage").files[0]);
-	// append other variables to data if you want: data.append('field_name_x', field_value_x);
-		$.ajax({
-			type : 'POST',
-			processData : false, // important
-			contentType : false, // important
-			data : data,
-			url : '/uploadimage',
-			dataType : 'json',
-			success : function(res) {		
-				mytripimageid =res.imageid;
-				alert(mytripimageid);
-				haveimage=true;
-				imageway="upload";
-				$.post('/getimagebyid',{imageid:mytripimageid}, function(res) {
-					document.getElementById("imagePreview").src = 'data:image/png;base64,'
-					+ res.image;			
-				});
-				}
-			});
-		}else{alert("please select a image!");}
-	});
-	</script>
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	document
+			.getElementById('submitimage')
+			.addEventListener(
+					'click',
+					function() {
+						var myimageid;
+						var data = new FormData();
+						if (document.getElementById("imagetoupload").files[0] != null) {
+							data.append('myimage', document
+									.getElementById("imagetoupload").files[0]);
+							alert("1");
+							// append other variables to data if you want: data.append('field_name_x', field_value_x);
+							$
+									.ajax({
+										url : '/uploadimage',
+										type : 'POST',
+										data : data,
+										cache : false,
+										json : true,
+										contentType : false, //不可缺参数
+										processData : false, //不可缺参数	
+										success : function(res) {
+											myimageid = res.imageid;
+											$
+													.post(
+															'/getimagebyid',
+															{
+																imageid : myimageid
+															},
+															function(res) {
+																document
+																		.getElementById("ItemPreview").src = 'data:image/png;base64,'
+																		+ res.image;
+															});
+										}
+									});
+						} else {
+							alert("please select a image!");
+						}
+					});
+</script>
+
 </html>

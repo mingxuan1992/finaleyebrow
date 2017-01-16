@@ -5,10 +5,9 @@ var fs = require('fs');
 var mongoURL = "mongodb://localhost:27017/eyebrow";
 var mongo = require("./mongo");
 var ObjectId = require('mongodb').ObjectId;
+var ejs = require("ejs");
+function savebufferimagetomongo(image, req, res) {
 
-
-function savebufferimagetomongo(image,req,res){
-	
 	mongo.connect(mongoURL, function() {
 		console.log('Connected to mongo at: ' + mongoURL);
 		var coll = mongo.collection('image');
@@ -32,18 +31,48 @@ function savebufferimagetomongo(image,req,res){
 				res.send(json_responses);
 			}
 		});
-	});	
+	});
 }
 
-
 exports.uploadimage = function(req, res) {
-
+	console.log("11");
 	var temppath = req.files.myimage.path;
+	console.log(temppath);
 	var image = {};
 	image.data = fs.readFileSync(temppath);
 	image.contentType = 'image/png';
 	console.log(image);
-	//savebufferimagetomongo(image,req,res);
+	savebufferimagetomongo(image, req, res);
 
+};
+
+
+exports.getimagebyid = function(req, res) {
+	var imageid = req.body.imageid;
+	console.log(req.body.imageid);
+
+	mongo.connect(mongoURL, function() {
+		console.log('Connected to mongo at: ' + mongoURL);
+		var coll = mongo.collection('image');
+		var json_responses;
+		coll.findOne({
+			_id : new ObjectId(imageid)
+		}, function(err, doc) {
+			if (doc) {
+				console.log(doc._id);
+				console.log("find image success!");
+				json_responses = {
+					image : doc.image.data
+				};
+				res.send(json_responses);
+			} else {
+				console.log("find returned false");
+				json_responses = {
+					"statusCode" : 401
+				};
+				res.send(json_responses);
+			}
+		});
+	});
 
 };
