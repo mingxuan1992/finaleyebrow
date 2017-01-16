@@ -46,7 +46,6 @@ exports.uploadimage = function(req, res) {
 
 };
 
-
 exports.getimagebyid = function(req, res) {
 	var imageid = req.body.imageid;
 	console.log(req.body.imageid);
@@ -71,6 +70,57 @@ exports.getimagebyid = function(req, res) {
 					"statusCode" : 401
 				};
 				res.send(json_responses);
+			}
+		});
+	});
+
+};
+
+exports.deleteimagebyid = function(req, res) {
+	var imageid = req.body.imageid;
+	console.log(req.body.imageid);
+
+	mongo.connect(mongoURL, function() {
+		console.log('Connected to mongo at: ' + mongoURL);
+		var coll = mongo.collection('image');
+		var json_responses;
+		coll.findOne({
+			_id : new ObjectId(imageid)
+		}, function(err, doc) {
+			if (doc) {
+				coll.remove({
+					_id : new ObjectId(imageid)
+				});
+				res.send({
+					status : "delete success"
+				});
+			} else {
+				res.send({
+					status : "delete failed"
+				});
+			}
+
+		});
+	});
+
+};
+
+exports.getallimage = function(req, res) {
+	mongo.connect(mongoURL, function() {
+		console.log('Connected to mongo at: ' + mongoURL);
+		var coll = mongo.collection('image');
+		var json_responses;
+		coll.find({}).toArray(function(err, doc) {
+			if (doc) {
+				console.log(doc);
+				console.log("find image success!");
+				res.send({
+					images : doc
+				});
+
+			} else {
+				console.log("find returned false");
+
 			}
 		});
 	});

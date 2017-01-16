@@ -2,81 +2,35 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style>
-#context {
-	width: 300px;
-	height: 400px;
-}
-
-#ItemPreview {
-	width: 750px;
-	height: 350px;
-}
 </style>
-<script
-	src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
 <body>
 
 	<p>欢迎来到这个简陋的后台</p>
-	<p>尝试添加 一项 经营项目 请选则一张本地图片 要求750宽 350高</p>
-	<p>并配一个标题和 一段介绍</p>
-
-	<input type="file" id="imagetoupload">
-	<button id="submitimage">添加照片</button>
-	<br>
-	<img id="ItemPreview" src="" />
-	<p>此处添加标题</p>
-	<input id="title">
-	<p>此处添加介绍</p>
-	<textarea id="context"></textarea>
-	<br>
-	<button id="submitxiangmu">尝试添加</button>
+	<button id="houtaizhuye">后台主页</button>
+	<button id="turntouploadimage">去添加照片页面</button>
+	<button id="turntocheckimage">去查看所有照片页面</button>
 
 </body>
 
 <script>
 <!-- submit image here -->
-	document
-			.getElementById('submitimage')
-			.addEventListener(
-					'click',
-					function() {
-						var myimageid;
-						var data = new FormData();
-						if (document.getElementById("imagetoupload").files[0] != null) {
-							data.append('myimage', document
-									.getElementById("imagetoupload").files[0]);
-							alert("1");
-							// append other variables to data if you want: data.append('field_name_x', field_value_x);
-							$
-									.ajax({
-										url : '/uploadimage',
-										type : 'POST',
-										data : data,
-										cache : false,
-										json : true,
-										contentType : false, //不可缺参数
-										processData : false, //不可缺参数	
-										success : function(res) {
-											myimageid = res.imageid;
-											$
-													.post(
-															'/getimagebyid',
-															{
-																imageid : myimageid
-															},
-															function(res) {
-																document
-																		.getElementById("ItemPreview").src = 'data:image/png;base64,'
-																		+ res.image;
-															});
-										}
-									});
-						} else {
-							alert("please select a image!");
-						}
-					});
+	document.getElementById('houtaizhuye').addEventListener('click',
+			function() {
+				window.location.assign('/ygbhyrcdzgurl')
+
+			});
+	document.getElementById('turntouploadimage').addEventListener('click',
+			function() {
+				window.location.assign('/ygbhyrcdzgurluploadimage')
+
+			});
+	document.getElementById('turntocheckimage').addEventListener('click',
+			function() {
+				window.location.assign('/ygbhyrcdzgurlcheckimage')
+			});
 </script>
 
 </html>

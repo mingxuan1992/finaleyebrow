@@ -35,10 +35,14 @@ app.get('/aboutpage', about.getaboutpage);
 
 var houtai= require('./routes/houtai');
 app.get('/ygbhyrcdzgurl', houtai.gethoutaipage);
+app.get('/ygbhyrcdzgurluploadimage',houtai.gethoutaiuploadimagepage);
+app.get('/ygbhyrcdzgurlcheckimage',houtai.gethoutaicheckimagepage);
 
 var image =require('./routes/image');
 app.post('/uploadimage',image.uploadimage);
 app.post('/getimagebyid',image.getimagebyid);
+app.post('/deleteimagebyid',image.deleteimagebyid);
+app.post('/getallimage',image.getallimage);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

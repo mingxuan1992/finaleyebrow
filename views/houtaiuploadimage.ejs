@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+</style>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<p>欢迎来到这个简陋的后台</p>
+	<button id="houtaizhuye">后台主页</button>
+	<p>尝试添加 一项 经营项目 请选则一张本地图片 要求750宽 350高</p>
+	<input type="file" id="imagetoupload">
+	<button id="submitimage">添加照片</button>
+	
+</body>
+
+<script>
+<!-- submit image here -->
+	document.getElementById('houtaizhuye').addEventListener('click',
+			function() {
+				window.location.assign('/ygbhyrcdzgurl')
+
+			});
+	document.getElementById('submitimage').addEventListener(
+			'click',
+			function() {
+				var data = new FormData();
+				if (document.getElementById("imagetoupload").files[0] != null) {
+					data.append('myimage', document
+							.getElementById("imagetoupload").files[0]);
+					alert("检测到文件正在尝试上传 如果下一条提示出现一串字符串则代表上传成功 字符串就是本图片后台id");
+					// append other variables to data if you want: data.append('field_name_x', field_value_x);
+					$.ajax({
+						url : '/uploadimage',
+						type : 'POST',
+						data : data,
+						cache : false,
+						json : true,
+						contentType : false, //不可缺参数
+						processData : false, //不可缺参数	
+						success : function(res) {
+							alert("成功 图片后台id为:"+res.imageid);		
+						}
+					});
+				} else {
+					alert("please select a image!");
+				}
+			});
+</script>
+
+</html>

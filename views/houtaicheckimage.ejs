@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+img {
+	width: 750px;
+	height: 350px;
+	border: 1px solid;
+}
+
+.container {
+	width: 800px;
+	height: 450px;
+	border: solid;
+	text-align: center;
+}
+</style>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<p>欢迎来到这个简陋的后台</p>
+	<button id="houtaizhuye">后台主页</button>
+	<p>查看所有图片 图片和图片后台id 这个id 用来作为将图片添加到其他地方的id</p>
+	<div id="showimages"></div>
+
+</body>
+
+<script>
+<!-- submit image here -->
+$.ajaxSetup({  
+    async : false  
+}); 
+	document.getElementById('houtaizhuye').addEventListener('click',
+			function() {
+				window.location.assign('/ygbhyrcdzgurl');
+
+			});
+	
+	var httpresponse;
+	$.post('/getallimage', {}, function(res) {
+		alert("一共检索到后台图片数量为"+res.images.length+",请耐心等待加载结束");
+		httpresponse=res;
+		var innerContext="";
+		var imagestring="";
+		for (i = 0; i < res.images.length; i++) {
+			imagestring ='data:image/png;base64,'+ res.images[i].image.data;
+			innerContext=innerContext+ "<div class='container'>";
+			innerContext=innerContext+	"<p>";
+			innerContext=innerContext+	res.images[i]._id;
+			innerContext=innerContext+"</p>";
+			innerContext=innerContext+"<button id='imagebutton";
+			innerContext=innerContext+i;
+			innerContext=innerContext+"'>";
+			innerContext=innerContext+"从后台删除此照片";
+			innerContext=innerContext+"</button>";
+			innerContext=innerContext+ "<img class='imageview' src=";
+			innerContext=innerContext+ imagestring;
+			innerContext=innerContext+ " />";
+			innerContext=innerContext+ " </div>";			
+		}
+		document.getElementById('showimages').innerHTML=innerContext;
+	});
+	for (i = 0; i < httpresponse.images.length; i++) {
+		setimagedeletebutton(i);
+	}
+	
+	function setimagedeletebutton(i){
+		var buttonname="imagebutton";
+		buttonname=buttonname+i;
+		document.getElementById(buttonname).addEventListener('click',
+			function() {
+				$.post('/deleteimagebyid', {imageid:httpresponse.images[i]._id }, function(res) {
+					alert(res.status);
+				});
+			});
+	}
+</script>
+
+</html>
