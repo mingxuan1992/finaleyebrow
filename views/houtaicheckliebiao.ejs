@@ -32,14 +32,17 @@ img {
 </body>
 
 <script>
-<!-- submit image here -->
+
+$.ajaxSetup({  
+    async : false  
+}); 
 	document.getElementById('houtaizhuye').addEventListener('click',
 			function() {
 				window.location.assign('/ygbhyrcdzgurl');
 
 			});
 
-	var httpresponse;
+	
 	document.getElementById('showxiangmubutton').addEventListener('click',
 			function() {
 				showlists("xiangmu");
@@ -52,9 +55,8 @@ img {
 			function() {
 				showlists("chanpin");
 			});
-
+	var httpresponse;
 	function showlists(thislistname) {
-
 		$.post('/getallliebiaobycategory', {
 			category : thislistname
 		}, function(res) {
@@ -64,6 +66,10 @@ img {
 			var imagestring = "";
 			for (i = 0; i < res.liebiao.length; i++) {
 				innerContext = innerContext + "<div class=\"oneitem\">";
+				innerContext = innerContext + "<button id='button";
+				innerContext = innerContext + i;
+				innerContext = innerContext +"'>点击这里删除本条</button>";
+				innerContext = innerContext + "<br>"
 				innerContext = innerContext + "分类:";
 				innerContext = innerContext + res.liebiao[i].oneitem.category;
 				innerContext = innerContext + "<br>";
@@ -84,6 +90,20 @@ img {
 			}
 			document.getElementById('showitems').innerHTML = innerContext;
 		});
+		for (i = 0; i < httpresponse.liebiao.length; i++) {
+			setliebiaodeletebutton(i);
+		}
+	}
+	function setliebiaodeletebutton(i){
+		var buttonname="button";
+		buttonname=buttonname+i;
+		document.getElementById(buttonname).addEventListener('click',
+			function() {
+				alert("本条被删除列表id为:"+httpresponse.liebiao[i]._id);
+				$.post('/deleteliebiaobyid', {oneitemid:httpresponse.liebiao[i]._id }, function(res) {
+					alert(res.status);
+				});
+			});
 
 	}
 </script>

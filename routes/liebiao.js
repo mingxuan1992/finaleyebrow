@@ -62,6 +62,7 @@ exports.deleteliebiaobyid = function(req, res) {
 		coll.findOne({
 			_id : new ObjectId(oneitem)
 		}, function(err, doc) {
+			console.log(doc);
 			if (doc) {
 				coll.remove({
 					_id : new ObjectId(oneitem)

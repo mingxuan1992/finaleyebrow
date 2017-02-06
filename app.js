@@ -49,6 +49,9 @@ app.post('/getallimage',image.getallimage);
 var liebiao =require('./routes/liebiao');
 app.post('/postliebiao',liebiao.postliebiao);
 app.post('/getallliebiaobycategory',liebiao.getallliebiaobycategory);
+app.post('/deleteliebiaobyid',liebiao.deleteliebiaobyid);
+
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
