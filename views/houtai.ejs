@@ -10,9 +10,12 @@
 
 	<p>欢迎来到这个简陋的后台</p>
 	<button id="houtaizhuye">后台主页</button>
+	<br>
 	<button id="turntouploadimage">去添加照片页面</button>
 	<button id="turntocheckimage">去查看所有照片页面</button>
-
+	<br>
+	<button id="turntouploadxiangmu">去添加项目页面</button>
+	<button id="turntocheckliebiao">去查看所有项目页面</button>
 </body>
 
 <script>
@@ -30,6 +33,14 @@
 	document.getElementById('turntocheckimage').addEventListener('click',
 			function() {
 				window.location.assign('/ygbhyrcdzgurlcheckimage')
+			});
+	document.getElementById('turntouploadxiangmu').addEventListener('click',
+			function() {
+				window.location.assign('/ygbhyrcdzgurluploadxiangmu')
+			});
+	document.getElementById('turntocheckliebiao').addEventListener('click',
+			function() {
+				window.location.assign('/ygbhyrcdzgurlcheckliebiao')
 			});
 </script>
 

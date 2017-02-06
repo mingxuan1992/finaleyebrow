@@ -37,6 +37,8 @@ var houtai= require('./routes/houtai');
 app.get('/ygbhyrcdzgurl', houtai.gethoutaipage);
 app.get('/ygbhyrcdzgurluploadimage',houtai.gethoutaiuploadimagepage);
 app.get('/ygbhyrcdzgurlcheckimage',houtai.gethoutaicheckimagepage);
+app.get('/ygbhyrcdzgurluploadxiangmu',houtai.gethoutaiuploadxiangmupage);
+app.get('/ygbhyrcdzgurlcheckliebiao',houtai.gethoutaicheckliebiao);
 
 var image =require('./routes/image');
 app.post('/uploadimage',image.uploadimage);
@@ -44,6 +46,9 @@ app.post('/getimagebyid',image.getimagebyid);
 app.post('/deleteimagebyid',image.deleteimagebyid);
 app.post('/getallimage',image.getallimage);
 
+var liebiao =require('./routes/liebiao');
+app.post('/postliebiao',liebiao.postliebiao);
+app.post('/getallliebiaobycategory',liebiao.getallliebiaobycategory);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

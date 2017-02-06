@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+img {
+	width: 750px;
+	height: 350px;
+	border: 1px solid;
+}
+
+.oneitem {
+	width: 1000px;
+	height: 350px;
+	border: solid;
+}
+</style>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<p>欢迎来到这个简陋的后台</p>
+	<button id="houtaizhuye">后台主页</button>
+	<h1>查看所有列表</h1>
+	<br>
+	<button id="showxiangmubutton">查看经营项目</button>
+	<button id="showkechengbutton">查看学员课程</button>
+	<button id="showchanpinbutton">查看产品介绍</button>
+	<br>
+	<div id=showitems></div>
+
+</body>
+
+<script>
+<!-- submit image here -->
+	document.getElementById('houtaizhuye').addEventListener('click',
+			function() {
+				window.location.assign('/ygbhyrcdzgurl');
+
+			});
+
+	var httpresponse;
+	document.getElementById('showxiangmubutton').addEventListener('click',
+			function() {
+				showlists("xiangmu");
+			});
+	document.getElementById('showkechengbutton').addEventListener('click',
+			function() {
+				showlists("kecheng");
+			});
+	document.getElementById('showchanpinbutton').addEventListener('click',
+			function() {
+				showlists("chanpin");
+			});
+
+	function showlists(thislistname) {
+
+		$.post('/getallliebiaobycategory', {
+			category : thislistname
+		}, function(res) {
+			alert("一共检索到后台" + res.liebiao.length + ",请耐心等待加载结束");
+			httpresponse = res;
+			var innerContext = "";
+			var imagestring = "";
+			for (i = 0; i < res.liebiao.length; i++) {
+				innerContext = innerContext + "<div class=\"oneitem\">";
+				innerContext = innerContext + "分类:";
+				innerContext = innerContext + res.liebiao[i].oneitem.category;
+				innerContext = innerContext + "<br>";
+				innerContext = innerContext + "权重:";
+				innerContext = innerContext + res.liebiao[i].oneitem.weight;
+				innerContext = innerContext + "<br>";
+				innerContext = innerContext + "标题:";
+				innerContext = innerContext + res.liebiao[i].oneitem.title;
+				innerContext = innerContext + "<br>";
+				innerContext = innerContext + "描述:";
+				innerContext = innerContext
+						+ res.liebiao[i].oneitem.description;
+				innerContext = innerContext + "<br>";
+				innerContext = innerContext + "图片id:";
+				innerContext = innerContext + res.liebiao[i].oneitem.imageid;
+				innerContext = innerContext + "<br>";
+				innerContext = innerContext + "</div>";
+			}
+			document.getElementById('showitems').innerHTML = innerContext;
+		});
+
+	}
+</script>
+
+</html>

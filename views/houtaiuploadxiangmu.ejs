@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+body #title {
+	width: 400px;
+}
+
+body #textarea {
+	height: 400px;
+	width: 700px;
+}
+
+body #imageid {
+	width: 400px;
+}
+</style>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<p>欢迎来到这个简陋的后台</p>
+	<button id="houtaizhuye">后台主页</button>
+	<h1>添加各种列表页面</h1>
+	<p>尝试添加到列表 1请选择种类 2请选择权重 3请输入title 4请输入description 5请粘贴图片id 6请点击提交按钮</p>
+	<br>
+	<select id="selectforcategory">
+		<option value="xiangmu">经营项目</option>
+		<option value="kecheng">学员课程</option>
+		<option value="chanpin">产品介绍</option>
+	</select>
+	<select id="selectforweight">
+		<option value="1">最重要</option>
+		<option value="2">稍重要</option>
+		<option value="3">普通</option>
+	</select>
+	<input type="text" id="title">
+	<br>
+	<textarea id="textarea"></textarea>
+	<br>
+	<input type="text" id="imageid">
+	<button id="test">submit</button>
+
+
+
+</body>
+
+<script>
+<!-- submit image here -->
+	document.getElementById('houtaizhuye').addEventListener('click',
+			function() {
+				window.location.assign('/ygbhyrcdzgurl')
+
+			});
+	document.getElementById('test').addEventListener('click', function() {
+		$.post('/postliebiao', {
+			category : document.getElementById('selectforcategory').value,
+			weight : document.getElementById('selectforweight').value,
+			title : document.getElementById('title').value,
+			description : document.getElementById('textarea').value,
+			imageid : document.getElementById('imageid').value,
+		}, function(res) {
+			alert(res.status);
+
+		});
+
+	});
+</script>
+
+</html>
