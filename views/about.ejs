@@ -5,31 +5,8 @@
 <title>myEyebrow</title>
 <link rel="stylesheet" href="stylesheets/indexcss.css" type="text/css">
 </head>
+
 <style>
-@font-face {
-	font-family: 'Arimo-Bold';
-	src: url('../fonts/Arimo-Bold/Arimo-Bold.eot');
-	src: url('../fonts/Arimo-Bold/Arimo-Bold.woff') format('woff'),
-		url('../fonts/Arimo-Bold/Arimo-Bold.ttf') format('truetype'),
-		url('../fonts/Arimo-Bold/Arimo-Bold.svg') format('svg');
-}
-
-@font-face {
-	font-family: 'ChangaOne';
-	src: url('../fonts/ChangaOne/ChangaOne-Regular.eot');
-	src: url('../fonts/ChangaOne/ChangaOne-Regular.woff') format('woff'),
-		url('../fonts/ChangaOne/ChangaOne-Regular.ttf') format('truetype'),
-		url('../fonts/ChangaOne/ChangaOne-Regular.svg') format('svg');
-}
-
-@font-face {
-	font-family: 'Comfortaa-Regular';
-	src: url('../fonts/Comfortaa/Comfortaa-Regular.eot');
-	src: url('../fonts/Comfortaa/Comfortaa-Regular.woff') format('woff'),
-		url('../fonts/Comfortaa/Comfortaa-Regular.ttf') format('truetype'),
-		url('../fonts/Comfortaa/Comfortaa-Regular.svg') format('svg');
-}
-
 @font-face {
 	font-family: 'Opulence-JF';
 	src: url('../fonts/Opulence-JF/Opulence-JF.eot');
@@ -37,25 +14,23 @@
 }
 
 body {
-	background: url(../images/bg-header.gif) repeat-x top center,
-		url(../images/mytitle60.jpg) no-repeat top center;
+	background: url(../images/mytitle60.jpg) no-repeat top center;
 	background-color: #f5f2f1;
 	font-size: 14px;
 	font-family: Arial, Helvetica, sans-serif;
-	margin: 0 auto;
+	margin: 0;
 	padding: 0;
-	width: 100%;
 }
 
 #header {
-	margin: 0;
+	margin: 80px auto;
 	padding: 0;
-	height: 120px;
+	height: 140px;
+	width: 1160px;
 }
 
 #header .title1 {
 	float: left;
-	display: block;
 	font-family: 'Opulence-JF';
 	font-size: 100px;
 	font-weight: normal;
@@ -70,16 +45,17 @@ body {
 	color: black;
 	text-align: center;
 	text-decoration: none;
+	text-align: center;
 }
 
 #header .title2 {
 	float: left;
-	padding: 85px 0 0 230px;
+	padding: 85px 0 0 30px;
 	opacity: 0.5;
 	font-family: 'ChangeOne';
 	font-size: 25px;
 	margin: 0;
-	color: white;
+	color: black;
 	width: 324px;
 }
 
@@ -87,30 +63,30 @@ body {
 	margin: 0 auto;
 	padding: 0;
 	width: 1160px;
+	height: 900px;
 }
 
 #body .left {
 	float: left;
 	margin: 0;
 	padding: 0;
-	width: 240px;
+	width: 140px;
 	height: 400px;
 }
 
 #body .left .leftbuttonhome {
 	text-transform: uppercase;
-	font-size: 20px;
+	font-size: 15px;
 	opacity: 0.7;
-	width: 150px;
+	width: 110px;
 	height: 30px;
 	background-color: black;
 	color: white;
-	margin: 50px 0 0 80px;
+	margin: 50px 0 0 20px;
 	border-radius: 2px;
 	text-align: center;
 	line-height: 30px;
 	opacity: 0.7;
-	font-size: 20px;
 }
 
 #body .left .leftbuttonhome:hover {
@@ -119,17 +95,16 @@ body {
 
 #body .left .leftbutton {
 	text-transform: uppercase;
-	font-size: 20px;
+	font-size: 15px;
 	opacity: 0.7;
-	width: 150px;
+	width: 110px;
 	height: 30px;
 	color: white;
 	background-color: #658e95;
-	margin: 30px 0 0 80px;
+	margin: 30px 0 0 20px;
 	border-radius: 2px;
 	text-align: center;
 	line-height: 30px;
-	font-size: 20px;
 }
 
 #body .left .leftbutton:hover {
@@ -138,46 +113,33 @@ body {
 
 #body .right {
 	float: left;
-	margin: 0;
+	margin: 0 0 0 30px;
 	padding: 0;
-	width: 920px;
-	height: 600px;
-	float: left;
+	width: 990px;
+	height: 800px;
+	border-top: 2px solid #658e95;
+	border-bottom: 2px solid #658e95;
+	box-shadow: 0 0 7px 0px #658e95 inset;
+	overflow: hidden;
 }
 
 #body .right #rightcontainer {
-	margin: 40px auto;
-	width: 800px;
-	height: 300px;
-	box-shadow: 0px 0px 7px #658e95 inset;
+	margin: 20px 0 0 55px;
 	padding: 0;
-	border-top: 2px solid #658e95;
-	border-bottom: 2px solid #658e95;
+	width: 890px;
+	height: 750px;
+	box-shadow: 0 0 7px #658e95;
+	float: left;
 }
 
-#body .right  #rightcontainer #title {
-	margin: 10px auto;
-	width: 750px;
-	height: 40px;
+#body .right #rightcontainer #title {
+	font-size: 20px;
 	text-align: center;
-	border-bottom: 2px solid #658e95;
-	font-size: 30px;
-	color: #658e95;
-}
-#body .right  #rightcontainer p {
-	margin: 10px auto;
-	width: 750px;
-	height: 200px;
-	text-align: center;
-
-	font-size: 30px;
-	color: #658e95;
 }
 
 #foot {
-	float: left;
-	margin: 0;
-	width: 100%;
+	margin: 0 auto;
+	width: 1500px;
 	height: 180px;
 	background-color: #658e95;
 }
@@ -220,12 +182,9 @@ body {
 		<div class="right">
 			<div id="rightcontainer">
 				<div id="title">关于我们</div>
-				<p>哈哈哈哈哈 我也不知道该写点儿什么</p>
+				<p>我也不知道该写什么</p>
 			</div>
-
 		</div>
-
-
 	</div>
 	<div id="foot">
 		<div id="contactinfo">

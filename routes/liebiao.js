@@ -30,13 +30,15 @@ exports.postliebiao = function(req, res) {
 	});
 };
 
-exports.getallliebiaobycategory= function(req, res) {
+exports.getallliebiaobycategory = function(req, res) {
 	console.log(req.body);
 	mongo.connect(mongoURL, function() {
 		console.log('Connected to mongo at: ' + mongoURL);
 		var coll = mongo.collection('liebiao');
 		var json_responses;
-		coll.find({'oneitem.category':req.body.category}).toArray(function(err, doc) {
+		coll.find({
+			'oneitem.category' : req.body.category
+		}).toArray(function(err, doc) {
 			if (doc) {
 				console.log(doc);
 				console.log("find liebiaobycategory success!");
@@ -54,7 +56,7 @@ exports.getallliebiaobycategory= function(req, res) {
 
 exports.deleteliebiaobyid = function(req, res) {
 	console.log(req.body.oneitemid);
-	var oneitem=req.body.oneitemid;
+	var oneitem = req.body.oneitemid;
 	mongo.connect(mongoURL, function() {
 		console.log('Connected to mongo at: ' + mongoURL);
 		var coll = mongo.collection('liebiao');
@@ -73,6 +75,37 @@ exports.deleteliebiaobyid = function(req, res) {
 			} else {
 				res.send({
 					status : "delete failed"
+				});
+			}
+
+		});
+	});
+};
+
+exports.updateliebiaobyid = function(req, res) {
+	mongo.connect(mongoURL, function() {
+		console.log('Connected to mongo at: ' + mongoURL);
+		var coll = mongo.collection('liebiao');
+		coll.update({
+			_id : new ObjectId(req.body.oneitemid)
+		}, {
+			$set : {
+				'oneitem.weight' : req.body.weight,
+				'oneitem.title' : req.body.title,
+				'oneitem.description' : req.body.description,
+				'oneitem.imageid' : req.body.imageid
+			}
+		}, function(err, doc) {
+	
+			if (doc) {
+				console.log("update succes");
+				res.send({
+					status : "update success"
+				});
+			} else {
+				console.log("update failed");
+				res.send({
+					status : "update failed"
 				});
 			}
 
