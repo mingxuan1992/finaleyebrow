@@ -48,29 +48,35 @@ exports.uploadimage = function(req, res) {
 
 exports.getimagebyid = function(req, res) {
 	var imageid = req.body.imageid;
-	mongo.connect(mongoURL, function() {
-		console.log('Connected to mongo at: ' + mongoURL);
-		var coll = mongo.collection('image');
-		var json_responses;
-		coll.findOne({
-			_id : new ObjectId(imageid)
-		}, function(err, doc) {
-			if (doc) {
-				console.log(doc._id);
-				console.log("find image success!");
-				json_responses = {
-					image : doc.image.data
-				};
-				res.send(json_responses);
-			} else {
-				console.log("find returned false");
-				json_responses = {
-					"statusCode" : 401
-				};
-				res.send(json_responses);
-			}
+	if (ObjectId.isValid(imageid)) {
+		mongo.connect(mongoURL, function() {
+			console.log('Connected to mongo at: ' + mongoURL);
+			var coll = mongo.collection('image');
+			var json_responses;
+			coll.findOne({
+				_id : new ObjectId(imageid)
+			}, function(err, doc) {
+				if (doc) {
+					console.log(doc._id);
+					console.log("find image success!");
+					json_responses = {
+						image : doc.image.data
+					};
+					res.send(json_responses);
+				} else {
+					console.log("find returned false");
+					json_responses = {
+						"statusCode" : 401
+					};
+					res.send(json_responses);
+				}
+			});
 		});
-	});
+	} else {
+		res.send({
+			"statusCode" : 401
+		});
+	}
 
 };
 
