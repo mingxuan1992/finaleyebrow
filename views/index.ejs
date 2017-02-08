@@ -233,11 +233,72 @@ body {
 	background-color: #658e95;
 	text-align: center;
 	color: white;
+	float:left;
 }
 
 #body #rightunder .chooseboard p:hover {
 	box-shadow: 0 0 7px #658e95;
 }
+#body #rightunder .chooseboard .itemboard {
+	height: 216px;
+	width: 858px;
+	margin: 0 0 0 7px;
+	font-size: 28px;
+	text-align: center;
+	color: white;
+	float:left;
+}
+#body #rightunder .chooseboard .itemboard .oneitem {
+	height: 216px;
+	width: 279px;
+	margin: 0 7px 0 0;
+	padding: 0;
+	font-size: 28px;
+	background-color:#658e95 ;
+	text-align: center;
+	color: white;
+	float:left;
+}
+#body #rightunder .chooseboard .itemboard .oneitem .imageplace{
+	height:210px;
+	width:273px;
+	margin:3px;
+	background-color:white;
+	position: absolute;
+	
+}
+#body #rightunder .chooseboard .itemboard .oneitem .imageplace img{
+	width:267px;
+	height:204px;
+	margin:3px;
+}
+#body #rightunder .chooseboard .itemboard .oneitem .showtitle{
+	position: absolute;
+	width:267px;
+	height:25px;
+	margin:130px 6px 0 6px;
+	font-size:18px;
+	color:white;
+	padding:0 0 0 0;
+	text-align:center;
+	background-color:#658e95;
+	opacity:0.9;
+}
+#body #rightunder .chooseboard .itemboard .oneitem .showdescription{
+	position: absolute;
+	width:267px;
+	height:55px;
+	margin:155px 6px 0 6px;
+	font-size:13px;
+	color:white;
+	padding:0 0 0 0;
+	text-align:center;
+	background-color:#999999;
+	opacity:0.9;
+	overflow: hidden;
+	
+}
+
 
 #foot {
 	margin: 0 auto;
@@ -262,6 +323,7 @@ body {
 	color: white;
 }
 </style>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <body>
 
 	<div id="header">
@@ -337,19 +399,27 @@ body {
 
 		</div>
 		<div id="rightunder">
-			<div class="chooseboardcontainer" id="xiangmu">
+			<div class="chooseboardcontainer">
 				<div class="chooseboard">
-					<p>经营项目</p>
+					<p id= "turntoxiangmupage">经营项目</p>
+					<div class="itemboard" id="xiangmu"></div>				
+						<p><br><br>+</p>
+					
+				</div>
+				
+			</div>
+			<div class="chooseboardcontainer">
+				<div class="chooseboard">
+					<p id= "turntokechengpage">学员课程</p>
+					<div class="itemboard" id="kecheng"></div>				
+						<p><br><br>+</p>
 				</div>
 			</div>
-			<div class="chooseboardcontainer" id="kecheng">
+			<div class="chooseboardcontainer">
 				<div class="chooseboard">
-					<p>学员课程</p>
-				</div>
-			</div>
-			<div class="chooseboardcontainer" id="kecheng">
-				<div class="chooseboard">
-					<p>作品展示</p>
+					<p id= "turntozuopinpage">作品展示</p>
+					<div class="itemboard" id="zuopin"></div>				
+						<p><br><br>+</p>
 				</div>
 			</div>
 		</div>
@@ -363,9 +433,15 @@ body {
 </body>
 
 <script>
+
+$.ajaxSetup({  
+    async : false  
+}); 
+
+
+<!-- make function of lunbo -->
 	var index = 0;
 	var width = 240;
-
 	document.getElementById('leftbutton').addEventListener('click', function() {
 		index = index - 1;
 		if (index < 0) {
@@ -389,7 +465,75 @@ body {
 				+ "px, 0, 0);	transition-delay: .3s;transition: ease; transition-duration:0.5s;";
 
 	}
+	
+	
+<!-- fill items -->
 
+	var httpresponse;
+	var times;
+	showlists("xiangmu");
+	showlists("kecheng");
+	showlists("zuopin");
+	
+	function showlists(thislistname) {
+		$.post('/getallliebiaobycategory', {
+			category : thislistname
+		}, function(res) {
+			httpresponse = res;
+			var innerContext = "";
+			var imagestring = "";
+			if (res.liebiao.length<3){
+				times=res.liebiao.length;
+			}else{
+				times=3;
+			}
+			for (var i = 0; i < times; i++) {	
+				innerContext= innerContext+ "<div class='oneitem'>";
+				innerContext= innerContext+ "<div class='imageplace' id='image";
+				innerContext= innerContext+thislistname;
+				innerContext= innerContext+i;
+				innerContext= innerContext+"'>";
+				innerContext= innerContext+ "</div>";
+				innerContext= innerContext+ "<div class='showtitle'>";		
+				innerContext= innerContext+ res.liebiao[i].oneitem.title;		
+				innerContext= innerContext+ "</div>";
+				innerContext= innerContext+ "<div class='showdescription'>";		
+				innerContext= innerContext+ res.liebiao[i].oneitem.description;		
+				innerContext= innerContext+ "</div>";
+				innerContext= innerContext+ "</div>";			
+			}
+			document.getElementById(thislistname).innerHTML = innerContext;
+		});
+		for (i = 0; i < times; i++) {
+			setimage(i,thislistname,httpresponse.liebiao[i].oneitem.imageid);
+		}
+	}
+	
+	
+	function setimage(i,thislistname,imageid){
+
+		$.ajax({
+			url : '/getimagebyid',
+			type : 'POST',
+			data : {imageid:imageid},
+			async : true,
+			success : function(res) {
+				if(res.image!=null){
+					var innerContext="";
+					var imagestring ='data:image/png;base64,'+ res.image;
+					var idname="image";
+					idname=idname+thislistname+i;
+					innerContext=innerContext+ "<img class='imageview' src=";
+					innerContext=innerContext+ imagestring;
+					innerContext=innerContext+ " />";
+					document.getElementById(idname).innerHTML = innerContext;
+				}
+			}
+		});
+	}
+	
+	
+<!-- draw two arrays -->
 	function drawLeft() {
 		var c = document.getElementById("leftCanvas"), cxt = c.getContext("2d");
 		cxt.beginPath();
@@ -420,7 +564,9 @@ body {
 	}
 	drawRight();
 
-	document.getElementById('xiangmu').addEventListener('click', function() {
+	
+<!-- links -->
+	document.getElementById('turntoxiangmupage').addEventListener('click', function() {
 		window.location.assign('/xiangmupage');
 	});
 	document.getElementById('hometag').addEventListener('click', function() {

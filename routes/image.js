@@ -48,8 +48,6 @@ exports.uploadimage = function(req, res) {
 
 exports.getimagebyid = function(req, res) {
 	var imageid = req.body.imageid;
-	console.log(req.body.imageid);
-
 	mongo.connect(mongoURL, function() {
 		console.log('Connected to mongo at: ' + mongoURL);
 		var coll = mongo.collection('image');
