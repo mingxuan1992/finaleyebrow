@@ -516,7 +516,7 @@ $.ajaxSetup({
 			url : '/getimagebyid',
 			type : 'POST',
 			data : {imageid:imageid},
-			async : true,
+			async : false,
 			success : function(res) {
 				if(res.image!=null){
 					var innerContext="";
