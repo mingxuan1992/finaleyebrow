@@ -1,7 +1,7 @@
 /**
  * New node file
  */
-var mongoURL = "mongodb://localhost:27017/eyebrow";
+var mongoURL = "mongodb://mingxuanhan:liumiaomiao@localhost:27017/eyebrow";
 var mongo = require("./mongo");
 var ObjectId = require('mongodb').ObjectId;
 exports.postliebiao = function(req, res) {
