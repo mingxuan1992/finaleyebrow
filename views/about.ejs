@@ -12,6 +12,16 @@
 	src: url('../fonts/Opulence-JF/Opulence-JF.eot');
 	src: url('../fonts/Opulence-JF/Opulence-JF.ttf') format('truetype');
 }
+@font-face {
+	font-family: 'Meizi';
+	src: url('../fonts/meizi/meizi.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Comfortaa-Regular';
+	src: url('../fonts/Comfortaa/Comfortaa-Regular.eot');
+	src: url('../fonts/Comfortaa/Comfortaa-Regular.woff') format('woff'), url('../fonts/Comfortaa/Comfortaa-Regular.ttf') format('truetype'), url('../fonts/Comfortaa/Comfortaa-Regular.svg') format('svg');
+}
 
 body {
 	background: url(../images/mytitle60.jpg) no-repeat top center;
@@ -133,8 +143,33 @@ body {
 }
 
 #body .right #rightcontainer #title {
+	margin: 30px 0 0 0;
+	font-size: 30px;
+	text-align: center;
+	font-size: 30px;
+}
+#body .right #rightcontainer #zhuyingxiangmutitle {
+	margin: 20px 0 0 0;
 	font-size: 20px;
 	text-align: center;
+	font-size: 20px;
+}
+#body .right #rightcontainer #zhuyingxiangmu {
+	width:700px;
+	font-family: 'meizi';
+	margin: 20px auto 0;
+	font-size: 25px;
+	text-align: center;
+
+}
+
+#body .right #rightcontainer #mixunban {
+	font-family: 'meizi';
+	margin: 20px auto 0;
+	width: 677px;
+	font-size: 25px;
+	text-align: center;
+
 }
 
 #foot {
@@ -147,15 +182,15 @@ body {
 #foot #contactinfo {
 	opacity: 0.5;
 	float: right;
-	margin: 0 50px 0 0;
-	width: 300px;
+	margin: 100px 80px 0 0;
+	width: 200px;
 	height: 80px;
-	padding: 100px 0 0 0;
+	padding: 0;
 }
 
 #foot #contactinfo p {
-	margin: 0;
-	width: 300px;
+	margin:0;
+	width: 200px;
 	height: 20px;
 	color: white;
 }
@@ -174,22 +209,28 @@ body {
 	<div id="body">
 		<div class="left">
 			<div class="leftbuttonhome" id="hometag">Home</div>
-			<div class="leftbutton">About</div>
-			<div class="leftbutton">Promotion</div>
-			<div class="leftbutton">纹绣师简历</div>
-			<div class="leftbutton">Contact</div>
+			<div class="leftbutton" id="abouttag">About</div>
+			<div class="leftbutton" id="promotag">Promo</div>
+			<div class="leftbutton" id="resumetag">Resume</div>
+			<div class="leftbutton" id="contacttag">Contact</div>
 		</div>
 		<div class="right">
 			<div id="rightcontainer">
 				<div id="title">关于我们</div>
-				<p>我也不知道该写什么</p>
+				<div id="zhuyingxiangmutitle">
+					MY. Eyebrow SCK悦妍国际美妆</div> <div id="zhuyingxiangmu"> 主要经营项目:<br><br>Eyebrow Embroidery/Eyeliner/Lips Enhancement 眉眼唇定妆<br> Tattoo training 韩式半永久定妆培训<br> Korean skin care韩国皮肤管理<br> Ultrasonics Knife私密超声刀<br> Remove Wrinkles无针雾化去皱/去眼袋<br> Hair follicle activation孕睫术/孕眉术、嫁接睫毛<br> Nail Specialist美甲<br> Slinmming 经络减肥<br>
+				</div>
+				<div id="mixunban">
+					SCK悦妍半永久定妆密训班：<br> <br>MY. Eyebrow SCK悦妍国际美妆，最新技术，通过美学-基础理论-实际操作，让零基础学员不走弯路迅速上手，为您后期开店提供技术扶持，并承诺学员终身免费复修，也为有基础的纹绣师们提供韩国最新技术提升课程SCK 悦妍半永久美妆定制成就您辉煌事业 美丽人生！
+				</div>
+
 			</div>
 		</div>
 	</div>
 	<div id="foot">
 		<div id="contactinfo">
-			<p>电话热线:11111111111</p>
-			<p>地址:新加坡某个地方</p>
+			<p>电话热线:+65 82903356</p>
+			<p>地址:124 TOWNER ROAD SINGAPORE (327815)</p>
 		</div>
 
 	</div>
@@ -199,6 +240,18 @@ body {
 <script>
 	document.getElementById('hometag').addEventListener('click', function() {
 		window.location.assign('/');
+	});
+	document.getElementById('abouttag').addEventListener('click', function() {
+		window.location.assign('/aboutpage');
+	});
+	document.getElementById('promotag').addEventListener('click', function() {
+		window.location.assign('/promopage');
+	});
+	document.getElementById('resumetag').addEventListener('click', function() {
+		window.location.assign('/resumepage');
+	});
+	document.getElementById('contacttag').addEventListener('click', function() {
+		window.location.assign('/contactpage');
 	});
 </script>
 

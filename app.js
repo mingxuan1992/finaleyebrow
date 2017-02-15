@@ -24,14 +24,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 var index= require('./routes/index');
 app.get('/', index.index);
 
-var link= require('./routes/link');
-app.get('/link1',link.link1);
-
 var xiangmu= require('./routes/xiangmu');
 app.get('/xiangmupage', xiangmu.getxiangmupage);
 
-var about= require('./routes/about');
-app.get('/aboutpage', about.getaboutpage);
+var mapping= require('./routes/mapping');
+app.get('/aboutpage', mapping.getaboutpage);
+app.get('/resumepage', mapping.getresumepage);
 
 var houtai= require('./routes/houtai');
 app.get('/ygbhyrcdzgurl', houtai.gethoutaipage);

@@ -301,6 +301,7 @@ body {
 	height: 55px;
 	margin: 155px 6px 0 6px;
 	font-size: 13px;
+	line-height:18px;
 	color: white;
 	padding: 0 0 0 0;
 	text-align: center;
@@ -326,6 +327,7 @@ body {
 }
 
 #foot #contactinfo p {
+	margin:0;
 	width: 200px;
 	height: 20px;
 	color: white;
@@ -348,9 +350,9 @@ body {
 		<div class="left">
 			<div class="leftbuttonhome" id="hometag">Home</div>
 			<div class="leftbutton" id="abouttag">About</div>
-			<div class="leftbutton">Promo</div>
-			<div class="leftbutton">纹绣师简历</div>
-			<div class="leftbutton">Contact</div>
+			<div class="leftbutton" id="promotag">Promo</div>
+			<div class="leftbutton" id="resumetag">Resume</div>
+			<div class="leftbutton" id="contacttag">Contact</div>
 		</div>
 		<div class="right">
 			<div id="leftbutton">
@@ -362,17 +364,6 @@ body {
 			<div class="imagecontainer">
 				<div class="wrap">
 					<div id="wrap-list">
-
-						<div class="showcase">
-							<div class="zhuyeimageplace">
-								<img src='/images/lunbo/showcase1.jpg' alt="eyebrowhomwpage1">
-							</div>
-							<a>我觉得现实效果还行啊</a>
-							<p>TT 我真觉得挺好看的啊 我做好了 问问老板意见吧 那个比这个简单很多 改回去好改 不过我已经聪明了 我现在每做一版我就存一份哈哈哈哈</p>
-						</div>
-
-
-
 
 					</div>
 				</div>
@@ -416,8 +407,8 @@ body {
 	</div>
 	<div id="foot">
 		<div id="contactinfo">
-			<p>电话热线:11111111111</p>
-			<p>地址:新加坡某个地方</p>
+			<p>电话热线:+65 82903356</p>
+			<p>地址:124 TOWNER ROAD SINGAPORE (327815)</p>
 		</div>
 	</div>
 </body>
@@ -600,6 +591,15 @@ $.ajaxSetup({
 	});
 	document.getElementById('abouttag').addEventListener('click', function() {
 		window.location.assign('/aboutpage');
+	});
+	document.getElementById('promotag').addEventListener('click', function() {
+		window.location.assign('/promopage');
+	});
+	document.getElementById('resumetag').addEventListener('click', function() {
+		window.location.assign('/resumepage');
+	});
+	document.getElementById('contacttag').addEventListener('click', function() {
+		window.location.assign('/contactpage');
 	});
 </script>
 </html>

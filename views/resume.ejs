@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>myEyebrow</title>
+<link rel="stylesheet" href="stylesheets/indexcss.css" type="text/css">
+</head>
+
+<style>
+@font-face {
+	font-family: 'Opulence-JF';
+	src: url('../fonts/Opulence-JF/Opulence-JF.eot');
+	src: url('../fonts/Opulence-JF/Opulence-JF.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Meizi';
+	src: url('../fonts/meizi/meizi.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Comfortaa-Regular';
+	src: url('../fonts/Comfortaa/Comfortaa-Regular.eot');
+	src: url('../fonts/Comfortaa/Comfortaa-Regular.woff') format('woff'), url('../fonts/Comfortaa/Comfortaa-Regular.ttf') format('truetype'), url('../fonts/Comfortaa/Comfortaa-Regular.svg') format('svg');
+}
+
+body {
+	background: url(../images/mytitle60.jpg) no-repeat top center;
+	background-color: #f5f2f1;
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	margin: 80px auto;
+	padding: 0;
+	height: 140px;
+	width: 1160px;
+}
+
+#header .title1 {
+	float: left;
+	font-family: 'Opulence-JF';
+	font-size: 100px;
+	font-weight: normal;
+	height: 120px;
+	line-height: 120px;
+	width: 400px;
+	color: black;
+	padding: 0 0 0 150px;
+}
+
+#header .title1 a {
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	text-align: center;
+}
+
+#header .title2 {
+	float: left;
+	padding: 85px 0 0 30px;
+	opacity: 0.5;
+	font-family: 'ChangeOne';
+	font-size: 25px;
+	margin: 0;
+	color: black;
+	width: 324px;
+}
+
+#body {
+	margin: 0 auto;
+	padding: 0;
+	width: 1160px;
+	height: 900px;
+}
+
+#body .left {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 140px;
+	height: 400px;
+}
+
+#body .left .leftbuttonhome {
+	text-transform: uppercase;
+	font-size: 15px;
+	opacity: 0.7;
+	width: 110px;
+	height: 30px;
+	background-color: black;
+	color: white;
+	margin: 50px 0 0 20px;
+	border-radius: 2px;
+	text-align: center;
+	line-height: 30px;
+	opacity: 0.7;
+}
+
+#body .left .leftbuttonhome:hover {
+	box-shadow: 0px 0px 15px 20px black;
+}
+
+#body .left .leftbutton {
+	text-transform: uppercase;
+	font-size: 15px;
+	opacity: 0.7;
+	width: 110px;
+	height: 30px;
+	color: white;
+	background-color: #658e95;
+	margin: 30px 0 0 20px;
+	border-radius: 2px;
+	text-align: center;
+	line-height: 30px;
+}
+
+#body .left .leftbutton:hover {
+	box-shadow: 0px 0px 10px 15px #658e95;
+}
+
+#body .right {
+	float: left;
+	margin: 0 0 0 30px;
+	padding: 0;
+	width: 990px;
+	height: 800px;
+	border-top: 2px solid #658e95;
+	border-bottom: 2px solid #658e95;
+	box-shadow: 0 0 7px 0px #658e95 inset;
+	overflow: hidden;
+}
+
+#body .right #rightcontainer {
+	margin: 20px 0 0 55px;
+	padding: 0;
+	width: 890px;
+	height: 750px;
+	box-shadow: 0 0 7px #658e95;
+	float: left;
+}
+
+#body .right #rightcontainer #imageplace {
+	margin: 0;
+	padding: 0;
+	width: 400px;
+	height: 700px;
+	float: left;
+}
+
+#body .right #rightcontainer  #imageplace img {
+	margin: 40px 50px 0;
+	padding: 0;
+	width: 300px;
+	height: 399px;
+	box-shadow: 0 0 7px #658e95;
+	float: left;
+}
+
+#body .right #rightcontainer #title {
+	margin: 30px 0 0 0;
+	font-size: 30px;
+	text-align: left;
+	width: 490px;
+	float: left;
+}
+
+
+
+#body .right #rightcontainer #zhuyingxiangmutitle {
+	margin: 20px 0 0 0;
+	font-size: 20px;
+	text-align: left;
+	float: left;
+	width: 490px;
+	line-height: 30px
+}
+#body .right #rightcontainer #dot {
+	margin: 0 0 0 0;
+	font-size: 20px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+	width: 20px;
+	line-height: 30px
+}
+#body .right #rightcontainer #neirong {
+	margin: 0 0 0 0;
+	font-size: 20px;
+	text-align: left;
+	font-size: 20px;
+	float: left;
+	width: 400px;
+	line-height: 30px
+}
+
+#foot {
+	margin: 0 auto;
+	width: 1300px;
+	height: 180px;
+	background-color: #658e95;
+}
+
+#foot #contactinfo {
+	opacity: 0.5;
+	float: right;
+	margin: 100px 80px 0 0;
+	width: 200px;
+	height: 80px;
+	padding: 0;
+}
+
+#foot #contactinfo p {
+	margin: 0;
+	width: 200px;
+	height: 20px;
+	color: white;
+}
+</style>
+<body>
+	<div id="header">
+		<div class="title1">
+			<a>My.Eyebrow</a>
+		</div>
+		<div class="title2">
+			<a>新加坡SCK悦研国际美妆</a>
+		</div>
+	</div>
+
+	<div id="body">
+		<div class="left">
+			<div class="leftbuttonhome" id="hometag">Home</div>
+			<div class="leftbutton" id="abouttag">About</div>
+			<div class="leftbutton" id="promotag">Promo</div>
+			<div class="leftbutton" id="resumetag">Resume</div>
+			<div class="leftbutton" id="contacttag">Contact</div>
+		</div>
+		<div class="right">
+			<div id="rightcontainer">
+				<div id="imageplace">
+					<img src='/images/resumeimage_Fotor.jpg' alt="resume">
+				</div>
+				<div id="title">Resume</div>
+				
+				<div id="zhuyingxiangmutitle">Cherry Liu（小瑞）</div>
+				<div id="dot"><br>-<br>-<br>-<br>-<br>-<br>-<br>-<br>-<br><br>-<br>-<br>-<br><br>-<br><br>-</div>
+				<div id="neirong">
+					<br>抗衰老领域专家<br> 国家高级化妆师<br> 英国ITEC认证国际纹绣师 <br>英国ITEC认证国际美容师 <br>英国ITEC认证国际美体师<br> 韩国半永久协会高级讲师 <br>韩国IFBC半永久国际大赛特邀评委<br> 英国ITEC国际认证（Beauty forever leaning hub） 纹绣教师 <br>北京军地医学院 医疗美容专业 学士<br> 2016国际中华纹绣名师全能大赛冠军 <br>My eyebrow新加坡SCK悦妍国际美妆创始人/首席定妆师 <br>Beist国际容貌管理有限公司—开运面相学顾问/烟霏眉 技术总监 <br>北京品致美妆造型培训特约讲师
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="foot">
+		<div id="contactinfo">
+			<p>电话热线:+65 82903356</p>
+			<p>地址:124 TOWNER ROAD SINGAPORE (327815)</p>
+		</div>
+
+	</div>
+
+</body>
+
+<script>
+	document.getElementById('hometag').addEventListener('click', function() {
+		window.location.assign('/');
+	});
+	document.getElementById('abouttag').addEventListener('click', function() {
+		window.location.assign('/aboutpage');
+	});
+	document.getElementById('promotag').addEventListener('click', function() {
+		window.location.assign('/promopage');
+	});
+	document.getElementById('resumetag').addEventListener('click', function() {
+		window.location.assign('/resumepage');
+	});
+	document.getElementById('contacttag').addEventListener('click', function() {
+		window.location.assign('/contactpage');
+	});
+</script>
+
+
+</html>
