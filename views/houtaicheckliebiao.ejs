@@ -53,6 +53,7 @@ img {
 	<button id="showkechengbutton">查看学员课程</button>
 	<button id="showzuopinbutton">查看作品展示</button>
 	<button id="showzhuyebutton">查看主页动图</button>
+	<button id="showpromobutton">查看promo</button>
 	<br>
 	<div id=showitems></div>
 
@@ -86,7 +87,10 @@ $.ajaxSetup({
 			function() {
 				showlists("zhuye");
 			});
-	
+	document.getElementById('showpromobutton').addEventListener('click',
+			function() {
+				showlists("promo");
+			});
 	
 	
 	var httpresponse;
