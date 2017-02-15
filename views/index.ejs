@@ -21,7 +21,6 @@ body {
 	padding: 0;
 }
 
-
 #header {
 	margin: 80px auto;
 	padding: 0;
@@ -146,11 +145,17 @@ body {
 	padding: 5px 10px 29px;
 }
 
+#body .right .imagecontainer #wrap-list .showcase .zhuyeimageplace {
+	margin: 0;
+	padding: 0;
+	width: 210px;
+	height: 170px;
+}
+
 #body .right .imagecontainer #wrap-list .showcase img {
 	float: left;
 	width: 210px;
 	height: 170px;
-	width: 210px;
 	margin: 0 0 0 5px;
 }
 
@@ -171,6 +176,7 @@ body {
 	width: 180px;
 	height: 100px;
 	line-height: 20px;
+	overflow:hidden;
 }
 
 #body .right #leftbutton {
@@ -233,12 +239,13 @@ body {
 	background-color: #658e95;
 	text-align: center;
 	color: white;
-	float:left;
+	float: left;
 }
 
 #body #rightunder .chooseboard p:hover {
 	box-shadow: 0 0 7px #658e95;
 }
+
 #body #rightunder .chooseboard .itemboard {
 	height: 216px;
 	width: 858px;
@@ -246,59 +253,61 @@ body {
 	font-size: 28px;
 	text-align: center;
 	color: white;
-	float:left;
+	float: left;
 }
+
 #body #rightunder .chooseboard .itemboard .oneitem {
 	height: 216px;
 	width: 279px;
 	margin: 0 7px 0 0;
 	padding: 0;
 	font-size: 28px;
-	background-color:#658e95 ;
+	background-color: #658e95;
 	text-align: center;
 	color: white;
-	float:left;
-}
-#body #rightunder .chooseboard .itemboard .oneitem .imageplace{
-	height:210px;
-	width:273px;
-	margin:3px;
-	background-color:white;
-	position: absolute;
-	
-}
-#body #rightunder .chooseboard .itemboard .oneitem .imageplace img{
-	width:267px;
-	height:204px;
-	margin:3px;
-}
-#body #rightunder .chooseboard .itemboard .oneitem .showtitle{
-	position: absolute;
-	width:267px;
-	height:25px;
-	margin:130px 6px 0 6px;
-	font-size:18px;
-	color:white;
-	padding:0 0 0 0;
-	text-align:center;
-	background-color:#658e95;
-	opacity:0.9;
-}
-#body #rightunder .chooseboard .itemboard .oneitem .showdescription{
-	position: absolute;
-	width:267px;
-	height:55px;
-	margin:155px 6px 0 6px;
-	font-size:13px;
-	color:white;
-	padding:0 0 0 0;
-	text-align:center;
-	background-color:#999999;
-	opacity:0.9;
-	overflow: hidden;
-	
+	float: left;
 }
 
+#body #rightunder .chooseboard .itemboard .oneitem .imageplace {
+	height: 210px;
+	width: 273px;
+	margin: 3px;
+	background-color: white;
+	position: absolute;
+}
+
+#body #rightunder .chooseboard .itemboard .oneitem .imageplace img {
+	width: 267px;
+	height: 204px;
+	margin: 3px;
+}
+
+#body #rightunder .chooseboard .itemboard .oneitem .showtitle {
+	position: absolute;
+	width: 267px;
+	height: 25px;
+	margin: 130px 6px 0 6px;
+	font-size: 18px;
+	color: white;
+	padding: 0 0 0 0;
+	text-align: center;
+	background-color: #658e95;
+	opacity: 0.9;
+}
+
+#body #rightunder .chooseboard .itemboard .oneitem .showdescription {
+	position: absolute;
+	width: 267px;
+	height: 55px;
+	margin: 155px 6px 0 6px;
+	font-size: 13px;
+	color: white;
+	padding: 0 0 0 0;
+	text-align: center;
+	background-color: #999999;
+	opacity: 0.9;
+	overflow: hidden;
+}
 
 #foot {
 	margin: 0 auto;
@@ -317,7 +326,6 @@ body {
 }
 
 #foot #contactinfo p {
-
 	width: 200px;
 	height: 20px;
 	color: white;
@@ -354,45 +362,18 @@ body {
 			<div class="imagecontainer">
 				<div class="wrap">
 					<div id="wrap-list">
-						<div class="showcase">
-							<img src='/images/lunbo/showcase1.jpg' alt="eyebrowhomwpage1"> <a>我觉得现实效果还行啊</a>
-							<p>TT 我真觉得挺好看的啊 我做好了 问问老板意见吧 那个比这个简单很多 改回去好改 不过我已经聪明了 我现在每做一版我就存一份哈哈哈哈</p>
-						</div>
-						<div class="showcase">
-							<img src='/images/lunbo/showcase2.jpg' alt="eyebrowhomwpage1"> <a>我觉得现实效果还行啊</a>
-							<p>TT 我真觉得挺好看的啊 我做好了 问问老板意见吧 那个比这个简单很多 改回去好改 不过我已经聪明了 我现在每做一版我就存一份哈哈哈哈</p>
 
-						</div>
 						<div class="showcase">
-							<img src='/images/lunbo/showcase3.jpg' alt="eyebrowhomwpage1"> <a>我觉得现实效果还行啊</a>
+							<div class="zhuyeimageplace">
+								<img src='/images/lunbo/showcase1.jpg' alt="eyebrowhomwpage1">
+							</div>
+							<a>我觉得现实效果还行啊</a>
 							<p>TT 我真觉得挺好看的啊 我做好了 问问老板意见吧 那个比这个简单很多 改回去好改 不过我已经聪明了 我现在每做一版我就存一份哈哈哈哈</p>
-
 						</div>
-						<div class="showcase">
-							<img src='/images/lunbo/showcase4.jpg' alt="eyebrowhomwpage1"> <a>我觉得现实效果还行啊</a>
-							<p>TT 我真觉得挺好看的啊 我做好了 问问老板意见吧 那个比这个简单很多 改回去好改 不过我已经聪明了 我现在每做一版我就存一份哈哈哈哈</p>
 
-						</div>
-						<div class="showcase">
-							<img src='/images/lunbo/showcase1.jpg' alt="eyebrowhomwpage1"> <a>我觉得现实效果还行啊</a>
-							<p>TT 我真觉得挺好看的啊 我做好了 问问老板意见吧 那个比这个简单很多 改回去好改 不过我已经聪明了 我现在每做一版我就存一份哈哈哈哈</p>
 
-						</div>
-						<div class="showcase">
-							<img src='/images/lunbo/showcase2.jpg' alt="eyebrowhomwpage1"> <a>我觉得现实效果还行啊</a>
-							<p>TT 我真觉得挺好看的啊 我做好了 问问老板意见吧 那个比这个简单很多 改回去好改 不过我已经聪明了 我现在每做一版我就存一份哈哈哈哈</p>
 
-						</div>
-						<div class="showcase">
-							<img src='/images/lunbo/showcase3.jpg' alt="eyebrowhomwpage1"> <a>我觉得现实效果还行啊</a>
-							<p>TT 我真觉得挺好看的啊 我做好了 问问老板意见吧 那个比这个简单很多 改回去好改 不过我已经聪明了 我现在每做一版我就存一份哈哈哈哈</p>
 
-						</div>
-						<div class="showcase">
-							<img src='/images/lunbo/showcase4.jpg' alt="eyebrowhomwpage1"> <a>我觉得现实效果还行啊</a>
-							<p>TT 我真觉得挺好看的啊 我做好了 问问老板意见吧 那个比这个简单很多 改回去好改 不过我已经聪明了 我现在每做一版我就存一份哈哈哈哈</p>
-
-						</div>
 					</div>
 				</div>
 			</div>
@@ -401,25 +382,34 @@ body {
 		<div id="rightunder">
 			<div class="chooseboardcontainer">
 				<div class="chooseboard">
-					<p id= "turntoxiangmupage">经营项目</p>
-					<div class="itemboard" id="xiangmu"></div>				
-						<p><br><br>+</p>
-					
+					<p id="turntoxiangmupage">经营项目</p>
+					<div class="itemboard" id="xiangmu"></div>
+					<p>
+						<br>
+						<br>+
+					</p>
+
 				</div>
-				
+
 			</div>
 			<div class="chooseboardcontainer">
 				<div class="chooseboard">
-					<p id= "turntokechengpage">学员课程</p>
-					<div class="itemboard" id="kecheng"></div>				
-						<p><br><br>+</p>
+					<p id="turntokechengpage">学员课程</p>
+					<div class="itemboard" id="kecheng"></div>
+					<p>
+						<br>
+						<br>+
+					</p>
 				</div>
 			</div>
 			<div class="chooseboardcontainer">
 				<div class="chooseboard">
-					<p id= "turntozuopinpage">作品展示</p>
-					<div class="itemboard" id="zuopin"></div>				
-						<p><br><br>+</p>
+					<p id="turntozuopinpage">作品展示</p>
+					<div class="itemboard" id="zuopin"></div>
+					<p>
+						<br>
+						<br>+
+					</p>
 				</div>
 			</div>
 		</div>
@@ -471,6 +461,42 @@ $.ajaxSetup({
 
 	var httpresponse;
 	var times;
+	
+	showwarp("zhuye");
+	function showwarp(thislistname) {
+		$.post('/getallliebiaobycategory', {
+			category : thislistname
+		}, function(res) {
+			httpresponse = res;
+			var innerContext = "";
+			var imagestring = "";
+			if (res.liebiao.length<8){
+				times=res.liebiao.length;
+			}else{
+				times=8;
+			}
+			for (var i = 0; i < times; i++) {	
+				innerContext= innerContext+ "<div class='showcase'>";
+				innerContext= innerContext+ "<div class='zhuyeimageplace' id='image";
+				innerContext= innerContext+thislistname;
+				innerContext= innerContext+i;
+				innerContext= innerContext+"'>";
+				innerContext= innerContext+ "</div>";
+				innerContext= innerContext+ "<a>";		
+				innerContext= innerContext+ res.liebiao[i].oneitem.title;		
+				innerContext= innerContext+ "</a>";
+				innerContext= innerContext+ "<p>";		
+				innerContext= innerContext+ res.liebiao[i].oneitem.description;		
+				innerContext= innerContext+ "</p>";
+				innerContext= innerContext+ "</div>";			
+			}
+			document.getElementById("wrap-list").innerHTML = innerContext;
+		});
+		for (i = 0; i < times; i++) {
+			setimage(i,thislistname,httpresponse.liebiao[i].oneitem.imageid);
+		}
+	}
+	
 	showlists("xiangmu");
 	showlists("kecheng");
 	showlists("zuopin");
