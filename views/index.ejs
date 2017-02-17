@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>myEyebrow</title>
-<link rel="stylesheet" href="stylesheets/indexcss.css" type="text/css">
+
 </head>
 <style>
 @font-face {
@@ -281,25 +281,41 @@ body {
 	height: 204px;
 	margin: 3px;
 }
-
-#body #rightunder .chooseboard .itemboard .oneitem .showtitle {
+#body #rightunder .chooseboard .itemboard .oneitem .moveplace{
 	position: absolute;
+	width:267px;
+	height:80px;
+	margin: 130px 6px 0 6px;
+	overflow:hidden;
+	transform: translate3d(0, 0, 0);
+	transition-delay: .3s;
+	transition: ease;
+	transition-duration:1.5s;
+}
+#body #rightunder .chooseboard .itemboard .oneitem .moveplace:hover{
+	margin :75px 6px 0 6px;
+	height:135px;
+	transition-delay: .3s;
+	transition: ease;
+	transition-duration:0.3s;
+}
+#body #rightunder .chooseboard .itemboard .oneitem .moveplace .showtitle {
+	margin:55px  0 0 0;
 	width: 267px;
 	height: 25px;
-	margin: 130px 6px 0 6px;
 	font-size: 18px;
 	color: white;
 	padding: 0 0 0 0;
 	text-align: center;
 	background-color: #658e95;
 	opacity: 0.9;
+	float:left;
 }
 
-#body #rightunder .chooseboard .itemboard .oneitem .showdescription {
-	position: absolute;
+#body #rightunder .chooseboard .itemboard .oneitem .moveplace .showdescription {
+
 	width: 267px;
 	height: 55px;
-	margin: 155px 6px 0 6px;
 	font-size: 13px;
 	line-height:18px;
 	color: white;
@@ -308,6 +324,7 @@ body {
 	background-color: #999999;
 	opacity: 0.9;
 	overflow: hidden;
+	float:left;
 }
 
 #foot {
@@ -375,7 +392,7 @@ body {
 				<div class="chooseboard">
 					<p id="turntoxiangmupage">经营项目</p>
 					<div class="itemboard" id="xiangmu"></div>
-					<p>
+					<p id="turntoxiangmupage2">
 						<br>
 						<br>+
 					</p>
@@ -387,7 +404,7 @@ body {
 				<div class="chooseboard">
 					<p id="turntokechengpage">学员课程</p>
 					<div class="itemboard" id="kecheng"></div>
-					<p>
+					<p id="turntokechengpage2">
 						<br>
 						<br>+
 					</p>
@@ -397,7 +414,7 @@ body {
 				<div class="chooseboard">
 					<p id="turntozuopinpage">作品展示</p>
 					<div class="itemboard" id="zuopin"></div>
-					<p>
+					<p id="turntozuopinpage2">
 						<br>
 						<br>+
 					</p>
@@ -511,13 +528,15 @@ $.ajaxSetup({
 				innerContext= innerContext+i;
 				innerContext= innerContext+"'>";
 				innerContext= innerContext+ "</div>";
+				innerContext= innerContext+ "<div class='moveplace'>";
 				innerContext= innerContext+ "<div class='showtitle'>";		
 				innerContext= innerContext+ res.liebiao[i].oneitem.title;		
 				innerContext= innerContext+ "</div>";
 				innerContext= innerContext+ "<div class='showdescription'>";		
 				innerContext= innerContext+ res.liebiao[i].oneitem.description;		
 				innerContext= innerContext+ "</div>";
-				innerContext= innerContext+ "</div>";			
+				innerContext= innerContext+ "</div>";		
+				innerContext= innerContext+ "</div>";
 			}
 			document.getElementById(thislistname).innerHTML = innerContext;
 		});
@@ -584,7 +603,27 @@ $.ajaxSetup({
 	
 <!-- links -->
 	document.getElementById('turntoxiangmupage').addEventListener('click', function() {
-		window.location.assign('/xiangmupage');
+		window.location.assign('/level2page/xiangmu');
+	});
+	
+	document.getElementById('turntokechengpage').addEventListener('click', function() {
+		window.location.assign('/level2page/kecheng');
+	});
+	document.getElementById('turntozuopinpage').addEventListener('click', function() {
+		window.location.assign('/level2page/zuopin');
+	});
+	document.getElementById('promotag').addEventListener('click', function() {
+		window.location.assign('/level2page/promo');
+	});
+	document.getElementById('turntoxiangmupage2').addEventListener('click', function() {
+		window.location.assign('/level2page/xiangmu');
+	});
+	
+	document.getElementById('turntokechengpage2').addEventListener('click', function() {
+		window.location.assign('/level2page/kecheng');
+	});
+	document.getElementById('turntozuopinpage2').addEventListener('click', function() {
+		window.location.assign('/level2page/zuopin');
 	});
 	document.getElementById('hometag').addEventListener('click', function() {
 		window.location.assign('/');
@@ -592,9 +631,7 @@ $.ajaxSetup({
 	document.getElementById('abouttag').addEventListener('click', function() {
 		window.location.assign('/aboutpage');
 	});
-	document.getElementById('promotag').addEventListener('click', function() {
-		window.location.assign('/promopage');
-	});
+
 	document.getElementById('resumetag').addEventListener('click', function() {
 		window.location.assign('/resumepage');
 	});

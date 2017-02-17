@@ -8,3 +8,6 @@ exports.getaboutpage = function(req, res) {
 exports.getresumepage = function(req, res) {
 	res.render('resume', {});
 };
+exports.getcontactpage = function(req, res) {
+	res.render('contact', {});
+};
