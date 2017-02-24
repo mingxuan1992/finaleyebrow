@@ -2,7 +2,7 @@
  * New node file
  */
 var fs = require('fs');
-var mongoURL = "mongodb://mingxuanhan:liumiaomiao@localhost:27017/eyebrow";
+var mongoURL = "mongodb://mingxuanhan:liumiaomiao@128.199.200.212:27017/eyebrow";
 var mongo = require("./mongo");
 var ObjectId = require('mongodb').ObjectId;
 var ejs = require("ejs");

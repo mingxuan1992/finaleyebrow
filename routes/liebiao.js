@@ -1,7 +1,7 @@
 /**
  * New node file
  */
-var mongoURL = "mongodb://mingxuanhan:liumiaomiao@localhost:27017/eyebrow";
+var mongoURL = "mongodb://mingxuanhan:liumiaomiao@128.199.200.212:27017/eyebrow";
 var mongo = require("./mongo");
 var ObjectId = require('mongodb').ObjectId;
 exports.postliebiao = function(req, res) {
@@ -46,6 +46,28 @@ exports.getallliebiaobycategory = function(req, res) {
 					liebiao : doc
 				});
 
+			} else {
+				console.log("find returned false");
+
+			}
+		});
+	});
+};
+exports.getliebiaobyid = function(req, res) {
+	console.log(req.body);
+	mongo.connect(mongoURL, function() {
+		console.log('Connected to mongo at: ' + mongoURL);
+		var coll = mongo.collection('liebiao');
+		var json_responses;
+		coll.find({
+			_id : new ObjectId(req.body.oneitemid)
+		}).toArray(function(err, doc) {
+			if (doc) {
+				console.log(doc);
+				console.log("find liebiaobycategory success!");
+				res.send({
+					liebiao : doc
+				});
 			} else {
 				console.log("find returned false");
 

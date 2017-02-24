@@ -22,6 +22,8 @@ app.get('/', index.index);
 
 var level2page = require('./routes/level2page');
 app.get('/level2page/:category', level2page.getlevel2page);
+var level3page = require('./routes/level3page');
+app.get('/level3page/:thisid', level3page.getlevel3page);
 
 var mapping = require('./routes/mapping');
 app.get('/aboutpage', mapping.getaboutpage);
@@ -46,6 +48,7 @@ app.post('/postliebiao', liebiao.postliebiao);
 app.post('/getallliebiaobycategory', liebiao.getallliebiaobycategory);
 app.post('/deleteliebiaobyid', liebiao.deleteliebiaobyid);
 app.post('/updateliebiaobyid', liebiao.updateliebiaobyid);
+app.post('/getliebiaobyid', liebiao.getliebiaobyid);
 
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));

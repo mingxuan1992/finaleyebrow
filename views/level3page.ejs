@@ -136,7 +136,7 @@ body {
 
 #body .right #rightcontainer {
 	margin: 20px 0 0 55px;
-	padding: 0;
+	padding: 0 0 20px;
 	width: 890px;
 	min-height: 750px;
 	box-shadow: 0 0 7px #658e95;
@@ -162,40 +162,35 @@ body {
 	
 }
 
-#body .right #rightcontainer #context .oneitem {
-	box-shadow: 0 0 7px #658e95;
-	margin: 30px;
-	padding: 0 0 10px 0;
-}
-
-#body .right #rightcontainer #context .oneitem .showtitle {
+#body .right #rightcontainer #context .oneitemtitle {
 	height: 30px;
-	width: 100%;
-	background-color: rgba(25, 80, 60, .2);
+	width: 80%;
+	margin: 10px auto 0; background-color : rgba( 25, 80, 60, .2);
 	font-size: 25px;
 	text-align: center;
-	font-size: 25px
+	font-size: 25px;
+	background-color: rgba(25, 80, 60, .2);
 }
 
-#body .right #rightcontainer #context .oneitem .showdescription {
-	height: 70px;
-	width: 80%;
-	margin: 5px auto 0;
+#body .right #rightcontainer #context .oneitemdescription {
+	height: auto;
+	width: 70%;
+	margin: 15px auto 0;
 	font-size: 16px;
 	text-align: left;
-	overflow: hidden;
+	line-height: 30px;
 }
 
-#body .right #rightcontainer #context .oneitem .imageplace {
+#body .right #rightcontainer #context .oneitemimageplace {
 	margin: 10px auto;
-	height: 350px;
-	width: 430px;
+	height: 520px;
+	width: 640px;
 	box-shadow: 0 0 7px #658e95;
 }
 
-#body .right #rightcontainer #context .oneitem .imageplace img {
-	width: 420px;
-	height: 340px;
+#body .right #rightcontainer #context .oneitemimageplace img {
+	width: 630px;
+	height: 510px;
 	margin: 5px 0 0 5px;
 }
 
@@ -251,8 +246,8 @@ body {
 		</div>
 		<div class="right">
 			<div id="rightcontainer">
-				<div id="title"><%= category %></div>
-				<div id="realdisplaytitle"><%= category %></div>
+				<div id="title"><%= thisid %></div>
+				<div id="realdisplaytitle"><%= thisid %></div>
 				<div id="context"></div>
 
 
@@ -292,10 +287,8 @@ body {
 		window.location.assign('/contactpage');
 	});
 
-
-	changedisplaytitletochinese();
-	function changedisplaytitletochinese() {
-		var value = document.getElementById('realdisplaytitle').innerHTML;
+	function changedisplaytitletochinese(value) {
+		
 		switch (value) {
 		case "xiangmu":
 			document.getElementById('realdisplaytitle').innerHTML = "经营项目";
@@ -318,64 +311,34 @@ body {
 	var httpresponse;
 	var times;
 
-	showlists(document.getElementById('title').innerHTML);
-	function showlists(thislistname) {
-		$
-				.post(
-						'/getallliebiaobycategory',
-						{
-							category : thislistname
-						},
-						function(res) {
-					
-							httpresponse = res;
-							var innerContext = "";
-							var imagestring = "";
-							if (res.liebiao.length < 3) {
-								times = res.liebiao.length;
-							} else {
-								times = 3;
-							}
-							for (var i = 0; i < times; i++) {
-								innerContext = innerContext
-										+ "<div class='oneitem' id='oneitem";
-								innerContext = innerContext + i;
-								innerContext = innerContext+"'>";
+	setcontext();
+	function setcontext() {
+		$.post('/getliebiaobyid', {
+			oneitemid : document.getElementById('title').innerHTML
+		}, function(res) {
+			
+			var innerContext="";
+			innerContext=innerContext+ "<div class='oneitemtitle'>";
+			innerContext=innerContext+ res.liebiao[0].oneitem.title;
+			innerContext=innerContext+"</div>";
+			innerContext=innerContext+ "<div class='oneitemdescription'>";
+			innerContext=innerContext+ res.liebiao[0].oneitem.description;
+			innerContext=innerContext+"</div>";
+			innerContext=innerContext+ "<div class='oneitemimageplace' id='image'>";
 
-								innerContext = innerContext
-										+ "<div class='showtitle'>";
-								innerContext = innerContext
-										+ res.liebiao[i].oneitem.title;
-								innerContext = innerContext + "</div>";
-								innerContext = innerContext
-										+ "<div class='showdescription'>";
-								innerContext = innerContext
-										+ res.liebiao[i].oneitem.description;
-								innerContext = innerContext + "</div>";
-								innerContext = innerContext
-										+ "<div class='imageplace' id='image";
-				innerContext= innerContext+thislistname;
-				innerContext= innerContext+i;
-				innerContext= innerContext+"'>";
-								innerContext = innerContext + "</div>";
-								innerContext = innerContext + "</div>";
-							}
-							document.getElementById("context").innerHTML = innerContext;
-						});
-		for (i = 0; i < times; i++) {
-			setimage(i, thislistname, httpresponse.liebiao[i].oneitem.imageid);
-			setoneitemaction(i,httpresponse.liebiao[i]._id);
+			innerContext=innerContext+"</div>";
+			
+			document.getElementById('context').innerHTML = innerContext;
+			
+			alert(JSON.stringify(res));
+			changedisplaytitletochinese(res.liebiao[0].oneitem.category); 
+			setimage(res.liebiao[0].oneitem.imageid);
 		}
-	}
-	function setoneitemaction(i,id){
-		var name="oneitem";
-		name=name+ i;
-		document.getElementById(name).addEventListener('click', function() {
-			window.location.assign('/level3page/'+id);
-		});
+		
+		)
 	}
 
-	function setimage(i, thislistname, imageid) {
+	function setimage(imageid) {
 
 		$
 				.ajax({
@@ -391,7 +354,7 @@ body {
 							var imagestring = 'data:image/png;base64,'
 									+ res.image;
 							var idname = "image";
-							idname = idname + thislistname + i;
+						
 							innerContext = innerContext
 									+ "<img class='imageview' src=";
 					innerContext=innerContext+ imagestring;
