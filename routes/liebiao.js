@@ -4,6 +4,7 @@
 var mongoURL = "mongodb://mingxuanhan:liumiaomiao@128.199.200.212:27017/eyebrow";
 var mongo = require("./mongo");
 var ObjectId = require('mongodb').ObjectId;
+
 exports.postliebiao = function(req, res) {
 	console.log(req.body);
 	mongo.connect(mongoURL, function() {

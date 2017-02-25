@@ -176,7 +176,7 @@ body {
 	width: 180px;
 	height: 100px;
 	line-height: 20px;
-	overflow:hidden;
+	overflow: hidden;
 }
 
 #body .right #leftbutton {
@@ -281,26 +281,29 @@ body {
 	height: 204px;
 	margin: 3px;
 }
-#body #rightunder .chooseboard .itemboard .oneitem .moveplace{
+
+#body #rightunder .chooseboard .itemboard .oneitem .moveplace {
 	position: absolute;
-	width:267px;
-	height:80px;
+	width: 267px;
+	height: 80px;
 	margin: 130px 6px 0 6px;
-	overflow:hidden;
+	overflow: hidden;
 	transform: translate3d(0, 0, 0);
 	transition-delay: .3s;
 	transition: ease;
-	transition-duration:1.5s;
+	transition-duration: 1.5s;
 }
-#body #rightunder .chooseboard .itemboard .oneitem .moveplace:hover{
-	margin :75px 6px 0 6px;
-	height:135px;
+
+#body #rightunder .chooseboard .itemboard .oneitem .moveplace:hover {
+	margin: 75px 6px 0 6px;
+	height: 135px;
 	transition-delay: .3s;
 	transition: ease;
-	transition-duration:0.3s;
+	transition-duration: 0.3s;
 }
+
 #body #rightunder .chooseboard .itemboard .oneitem .moveplace .showtitle {
-	margin:55px  0 0 0;
+	margin: 55px 0 0 0;
 	width: 267px;
 	height: 25px;
 	font-size: 18px;
@@ -309,22 +312,21 @@ body {
 	text-align: center;
 	background-color: #658e95;
 	opacity: 0.9;
-	float:left;
+	float: left;
 }
 
 #body #rightunder .chooseboard .itemboard .oneitem .moveplace .showdescription {
-
 	width: 267px;
 	height: 55px;
 	font-size: 13px;
-	line-height:18px;
+	line-height: 18px;
 	color: white;
 	padding: 0 0 0 0;
 	text-align: center;
 	background-color: #999999;
 	opacity: 0.9;
 	overflow: hidden;
-	float:left;
+	float: left;
 }
 
 #foot {
@@ -344,7 +346,7 @@ body {
 }
 
 #foot #contactinfo p {
-	margin:0;
+	margin: 0;
 	width: 200px;
 	height: 20px;
 	color: white;
@@ -380,9 +382,7 @@ body {
 			</div>
 			<div class="imagecontainer">
 				<div class="wrap">
-					<div id="wrap-list">
-
-					</div>
+					<div id="wrap-list"></div>
 				</div>
 			</div>
 
@@ -393,8 +393,7 @@ body {
 					<p id="turntoxiangmupage">经营项目</p>
 					<div class="itemboard" id="xiangmu"></div>
 					<p id="turntoxiangmupage2">
-						<br>
-						<br>+
+						<br> <br>+
 					</p>
 
 				</div>
@@ -405,8 +404,7 @@ body {
 					<p id="turntokechengpage">学员课程</p>
 					<div class="itemboard" id="kecheng"></div>
 					<p id="turntokechengpage2">
-						<br>
-						<br>+
+						<br> <br>+
 					</p>
 				</div>
 			</div>
@@ -415,8 +413,7 @@ body {
 					<p id="turntozuopinpage">作品展示</p>
 					<div class="itemboard" id="zuopin"></div>
 					<p id="turntozuopinpage2">
-						<br>
-						<br>+
+						<br> <br>+
 					</p>
 				</div>
 			</div>
@@ -467,83 +464,125 @@ $.ajaxSetup({
 	
 <!-- fill items -->
 
-	var httpresponse;
-	var times;
+
 	
-	showwarp("zhuye");
-	function showwarp(thislistname) {
-		$.post('/getallliebiaobycategory', {
-			category : thislistname
-		}, function(res) {
-			httpresponse = res;
-			var innerContext = "";
-			var imagestring = "";
-			if (res.liebiao.length<8){
-				times=res.liebiao.length;
+	showall();
+	function showall() {
+		$.post('/getindexpageitems', {}, function(res) {
+	
+			var times;
+			
+			
+			
+			if (res.items.zhuye.length<8){
+				times=res.items.zhuye.length;
 			}else{
 				times=8;
 			}
+			
+			
+			var innerContext = "";
 			for (var i = 0; i < times; i++) {	
 				innerContext= innerContext+ "<div class='showcase'>";
 				innerContext= innerContext+ "<div class='zhuyeimageplace' id='image";
-				innerContext= innerContext+thislistname;
+				innerContext= innerContext+	"zhuye";
 				innerContext= innerContext+i;
 				innerContext= innerContext+"'>";
 				innerContext= innerContext+ "</div>";
 				innerContext= innerContext+ "<a>";		
-				innerContext= innerContext+ res.liebiao[i].oneitem.title;		
+				innerContext= innerContext+ res.items.zhuye[i].oneitem.title;		
 				innerContext= innerContext+ "</a>";
 				innerContext= innerContext+ "<p>";		
-				innerContext= innerContext+ res.liebiao[i].oneitem.description;		
+				innerContext= innerContext+ res.items.zhuye[i].oneitem.description;		
 				innerContext= innerContext+ "</p>";
-				innerContext= innerContext+ "</div>";			
+				innerContext= innerContext+ "</div>";
+				setimage(i,"zhuye",res.items.zhuye[i].oneitem.imageid.split(",")[0]);
 			}
 			document.getElementById("wrap-list").innerHTML = innerContext;
-		});
-		for (i = 0; i < times; i++) {
-			setimage(i,thislistname,httpresponse.liebiao[i].oneitem.imageid);
-		}
-	}
-	
-	showlists("xiangmu");
-	showlists("kecheng");
-	showlists("zuopin");
-	
-	function showlists(thislistname) {
-		$.post('/getallliebiaobycategory', {
-			category : thislistname
-		}, function(res) {
-			httpresponse = res;
-			var innerContext = "";
-			var imagestring = "";
-			if (res.liebiao.length<3){
-				times=res.liebiao.length;
+			
+			
+			
+			if (res.items.xiangmu.length<3){
+				times=res.items.xiangmu.length;
 			}else{
 				times=3;
 			}
+			
+			var innerContext = "";
 			for (var i = 0; i < times; i++) {	
 				innerContext= innerContext+ "<div class='oneitem'>";
 				innerContext= innerContext+ "<div class='imageplace' id='image";
-				innerContext= innerContext+thislistname;
-				innerContext= innerContext+i;
-				innerContext= innerContext+"'>";
+				innerContext= innerContext+	"xiangmu";
+				innerContext= innerContext+ i;
+				innerContext= innerContext+ "'>";
 				innerContext= innerContext+ "</div>";
 				innerContext= innerContext+ "<div class='moveplace'>";
 				innerContext= innerContext+ "<div class='showtitle'>";		
-				innerContext= innerContext+ res.liebiao[i].oneitem.title;		
+				innerContext= innerContext+ res.items.xiangmu[i].oneitem.title;		
 				innerContext= innerContext+ "</div>";
 				innerContext= innerContext+ "<div class='showdescription'>";		
-				innerContext= innerContext+ res.liebiao[i].oneitem.description;		
+				innerContext= innerContext+ res.items.xiangmu[i].oneitem.description;		
 				innerContext= innerContext+ "</div>";
 				innerContext= innerContext+ "</div>";		
 				innerContext= innerContext+ "</div>";
+				setimage(i,"xiangmu",res.items.xiangmu[i].oneitem.imageid.split(",")[0]);
 			}
-			document.getElementById(thislistname).innerHTML = innerContext;
+			document.getElementById("xiangmu").innerHTML = innerContext;
+			
+			
+			var innerContext = "";
+			for (var i = 0; i < times; i++) {	
+				innerContext= innerContext+ "<div class='oneitem'>";
+				innerContext= innerContext+ "<div class='imageplace' id='image";
+				innerContext= innerContext+	"kecheng";
+				innerContext= innerContext+ i;
+				innerContext= innerContext+ "'>";
+				innerContext= innerContext+ "</div>";
+				innerContext= innerContext+ "<div class='moveplace'>";
+				innerContext= innerContext+ "<div class='showtitle'>";		
+				innerContext= innerContext+ res.items.kecheng[i].oneitem.title;		
+				innerContext= innerContext+ "</div>";
+				innerContext= innerContext+ "<div class='showdescription'>";		
+				innerContext= innerContext+ res.items.kecheng[i].oneitem.description;		
+				innerContext= innerContext+ "</div>";
+				innerContext= innerContext+ "</div>";		
+				innerContext= innerContext+ "</div>";
+				setimage(i,"kecheng",res.items.kecheng[i].oneitem.imageid.split(",")[0]);
+			}
+			document.getElementById("kecheng").innerHTML = innerContext;
+			
+			
+			var innerContext = "";
+			for (var i = 0; i < times; i++) {	
+				innerContext= innerContext+ "<div class='oneitem'>";
+				innerContext= innerContext+ "<div class='imageplace' id='image";
+				innerContext= innerContext+	"zuopin";
+				innerContext= innerContext+ i;
+				innerContext= innerContext+ "'>";
+				innerContext= innerContext+ "</div>";
+				innerContext= innerContext+ "<div class='moveplace'>";
+				innerContext= innerContext+ "<div class='showtitle'>";		
+				innerContext= innerContext+ res.items.zuopin[i].oneitem.title;		
+				innerContext= innerContext+ "</div>";
+				innerContext= innerContext+ "<div class='showdescription'>";		
+				innerContext= innerContext+ res.items.zuopin[i].oneitem.description;		
+				innerContext= innerContext+ "</div>";
+				innerContext= innerContext+ "</div>";		
+				innerContext= innerContext+ "</div>";
+				setimage(i,"zuopin",res.items.zuopin[i].oneitem.imageid.split(",")[0]);
+			}
+			document.getElementById("zuopin").innerHTML = innerContext;
+			
+			
 		});
-		for (i = 0; i < times; i++) {
-			setimage(i,thislistname,httpresponse.liebiao[i].oneitem.imageid);
-		}
+		
+			
+	
 	}
+	
+
+	
+<!-- setimage-->
 	
 	
 	function setimage(i,thislistname,imageid){

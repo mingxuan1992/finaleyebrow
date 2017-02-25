@@ -36,6 +36,8 @@ app.get('/ygbhyrcdzgurluploadimage', houtai.gethoutaiuploadimagepage);
 app.get('/ygbhyrcdzgurlcheckimage', houtai.gethoutaicheckimagepage);
 app.get('/ygbhyrcdzgurluploadxiangmu', houtai.gethoutaiuploadxiangmupage);
 app.get('/ygbhyrcdzgurlcheckliebiao', houtai.gethoutaicheckliebiao);
+app.post('/renewindexpage', houtai.renewindexpage);
+app.post('/getindexpageitems', houtai.getindexpageitems);
 
 var image = require('./routes/image');
 app.post('/uploadimage', image.uploadimage);

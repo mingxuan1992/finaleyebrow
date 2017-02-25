@@ -16,6 +16,10 @@
 	<br>
 	<button id="turntouploadxiangmu">去添加项目页面</button>
 	<button id="turntocheckliebiao">去查看所有项目页面</button>
+	<br>
+	<br>
+	<br>
+	<button id="renewindexpage">点此重置主页内容到最新</button>
 </body>
 
 <script>
@@ -41,6 +45,12 @@
 	document.getElementById('turntocheckliebiao').addEventListener('click',
 			function() {
 				window.location.assign('/ygbhyrcdzgurlcheckliebiao')
+			});
+	document.getElementById('renewindexpage').addEventListener('click',
+			function() {
+				$.post('/renewindexpage', {}, function(res) {
+					alert(res.status);
+				});
 			});
 </script>
 
