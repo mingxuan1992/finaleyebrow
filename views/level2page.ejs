@@ -186,16 +186,23 @@ body {
 	overflow: hidden;
 }
 
-#body .right #rightcontainer #context .oneitem .imageplace {
+#body .right #rightcontainer #context .oneitem .imagearea {
 	margin: 10px auto;
-	height: 350px;
-	width: 430px;
-	box-shadow: 0 0 7px #658e95;
+	height: 180px;
+	width: 700px;
 }
 
-#body .right #rightcontainer #context .oneitem .imageplace img {
-	width: 420px;
-	height: 340px;
+#body .right #rightcontainer #context .oneitem .imagearea .imageplace {
+	margin: 0 5px 0;
+	height: 180px;
+	width: 220px;
+	box-shadow: 0 0 7px #658e95;
+	float: left;
+}
+
+#body .right #rightcontainer #context .oneitem .imagearea .imageplace img {
+	width: 210px;
+	height: 170px;
 	margin: 5px 0 0 5px;
 }
 
@@ -292,7 +299,6 @@ body {
 		window.location.assign('/contactpage');
 	});
 
-
 	changedisplaytitletochinese();
 	function changedisplaytitletochinese() {
 		var value = document.getElementById('realdisplaytitle').innerHTML;
@@ -327,7 +333,7 @@ body {
 							category : thislistname
 						},
 						function(res) {
-					
+
 							httpresponse = res;
 							var innerContext = "";
 							var imagestring = "";
@@ -352,30 +358,47 @@ body {
 								innerContext = innerContext
 										+ res.liebiao[i].oneitem.description;
 								innerContext = innerContext + "</div>";
+
+								var imagestr = httpresponse.liebiao[i].oneitem.imageid;
+								var result = imagestr.split(",");
 								innerContext = innerContext
-										+ "<div class='imageplace' id='image";
-				innerContext= innerContext+thislistname;
-				innerContext= innerContext+i;
-				innerContext= innerContext+"'>";
+										+ "<div class='imagearea'>";
+								var imagecount = 3;
+								if (result.length < imagecount) {
+									imagecount = result.length;
+								}
+								
+								for (j = 0; j < imagecount; j++) {
+									innerContext = innerContext
+											+ "<div class='imageplace' id='image";
+
+			innerContext= innerContext+i;
+			innerContext= innerContext+"and";
+			innerContext= innerContext+j;
+			innerContext= innerContext+"'>";
+									innerContext = innerContext + "</div>";
+									setimage(i, j, result[j]);
+								}
+
 								innerContext = innerContext + "</div>";
 								innerContext = innerContext + "</div>";
 							}
 							document.getElementById("context").innerHTML = innerContext;
 						});
 		for (i = 0; i < times; i++) {
-			setimage(i, thislistname, httpresponse.liebiao[i].oneitem.imageid);
-			setoneitemaction(i,httpresponse.liebiao[i]._id);
+
+			setoneitemaction(i, httpresponse.liebiao[i]._id);
 		}
 	}
-	function setoneitemaction(i,id){
-		var name="oneitem";
-		name=name+ i;
+	function setoneitemaction(i, id) {
+		var name = "oneitem";
+		name = name + i;
 		document.getElementById(name).addEventListener('click', function() {
-			window.location.assign('/level3page/'+id);
+			window.location.assign('/level3page/' + id);
 		});
 	}
 
-	function setimage(i, thislistname, imageid) {
+	function setimage(i, j, imageid) {
 
 		$
 				.ajax({
@@ -391,7 +414,7 @@ body {
 							var imagestring = 'data:image/png;base64,'
 									+ res.image;
 							var idname = "image";
-							idname = idname + thislistname + i;
+							idname = idname + i + "and" + j;
 							innerContext = innerContext
 									+ "<img class='imageview' src=";
 					innerContext=innerContext+ imagestring;

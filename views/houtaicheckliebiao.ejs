@@ -25,7 +25,7 @@ img {
 	visibility: hidden;
 }
 
-.title{
+.title {
 	width: 400px;
 }
 
@@ -34,11 +34,10 @@ img {
 	width: 590px;
 }
 
-.imageid{
-	width:400px;
+.imageid {
+	width: 400px;
+	height: 50px;
 }
-
-
 </style>
 <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
@@ -60,17 +59,15 @@ img {
 </body>
 
 <script>
-
-$.ajaxSetup({  
-    async : false  
-}); 
+	$.ajaxSetup({
+		async : false
+	});
 	document.getElementById('houtaizhuye').addEventListener('click',
 			function() {
 				window.location.assign('/ygbhyrcdzgurl');
 
 			});
 
-	
 	document.getElementById('showxiangmubutton').addEventListener('click',
 			function() {
 				showlists("xiangmu");
@@ -91,76 +88,90 @@ $.ajaxSetup({
 			function() {
 				showlists("promo");
 			});
-	
-	
+
 	var httpresponse;
 	function showlists(thislistname) {
-		$.post('/getallliebiaobycategory', {
-			category : thislistname
-		}, function(res) {
-			alert("一共检索到后台" + res.liebiao.length + ",请耐心等待加载结束");
-			httpresponse = res;
-			var innerContext = "";
-			var imagestring = "";
-			for (i = 0; i < res.liebiao.length; i++) {
-				innerContext = innerContext + "<div class='oneitem'>";
-				innerContext = innerContext + "<button class='deletebutton'id='deletebutton";
+		$
+				.post(
+						'/getallliebiaobycategory',
+						{
+							category : thislistname
+						},
+						function(res) {
+							alert("一共检索到后台" + res.liebiao.length + ",请耐心等待加载结束");
+							httpresponse = res;
+							var innerContext = "";
+							var imagestring = "";
+							for (i = 0; i < res.liebiao.length; i++) {
+								innerContext = innerContext
+										+ "<div class='oneitem'>";
+								innerContext = innerContext
+										+ "<button class='deletebutton'id='deletebutton";
 				innerContext = innerContext + i;
 				innerContext = innerContext +"'>点击这里删除本条</button>";
-				innerContext = innerContext + "<button class='updatebutton' id='updatebutton";
+								innerContext = innerContext
+										+ "<button class='updatebutton' id='updatebutton";
 				innerContext = innerContext + i;
 				innerContext = innerContext +"'>显示编辑区</button>";
-				innerContext = innerContext + "<br>";
-				innerContext = innerContext + "分类:";
-				innerContext = innerContext + res.liebiao[i].oneitem.category;
-				innerContext = innerContext + "<br>";
-				innerContext = innerContext + "权重:";
-				innerContext = innerContext + res.liebiao[i].oneitem.weight;
-				innerContext = innerContext + "<br>";
-				innerContext = innerContext + "标题:";
-				innerContext = innerContext + res.liebiao[i].oneitem.title;
-				innerContext = innerContext + "<br>";
-				innerContext = innerContext + "描述:";
-				innerContext = innerContext
-						+ res.liebiao[i].oneitem.description;
-				innerContext = innerContext + "<br>";
-				innerContext = innerContext + "图片id:";
-				innerContext = innerContext + res.liebiao[i].oneitem.imageid;
-				innerContext = innerContext + "<br>";
-				innerContext = innerContext + "</div>";
-				
-				
-				innerContext = innerContext + "<div class='updateoneitem' id='updateoneitem";
+								innerContext = innerContext + "<br>";
+								innerContext = innerContext + "分类:";
+								innerContext = innerContext
+										+ res.liebiao[i].oneitem.category;
+								innerContext = innerContext + "<br>";
+								innerContext = innerContext + "权重:";
+								innerContext = innerContext
+										+ res.liebiao[i].oneitem.weight;
+								innerContext = innerContext + "<br>";
+								innerContext = innerContext + "标题:";
+								innerContext = innerContext
+										+ res.liebiao[i].oneitem.title;
+								innerContext = innerContext + "<br>";
+								innerContext = innerContext + "描述:";
+								innerContext = innerContext
+										+ res.liebiao[i].oneitem.description;
+								innerContext = innerContext + "<br>";
+								innerContext = innerContext + "图片id:";
+								innerContext = innerContext
+										+ res.liebiao[i].oneitem.imageid;
+								innerContext = innerContext + "<br>";
+								innerContext = innerContext + "</div>";
+
+								innerContext = innerContext
+										+ "<div class='updateoneitem' id='updateoneitem";
 				innerContext = innerContext + i;
 				innerContext = innerContext + "'>";
-				
-				innerContext = innerContext + "<select class='selectforweight' id='selectforweight";
+
+								innerContext = innerContext
+										+ "<select class='selectforweight' id='selectforweight";
 				innerContext = innerContext +i;
 				innerContext = innerContext +"' ><option value='1'>最重要</option><option value='2'>稍重要</option><option value='3'>普通</option></select>";
-		
-				innerContext = innerContext +"<input class='title' id='title";
+
+								innerContext = innerContext
+										+ "<input class='title' id='title";
 				innerContext = innerContext +i;
 				innerContext = innerContext +"'>";
-		
-				innerContext = innerContext +"<textarea class='description' id='description";
+
+								innerContext = innerContext
+										+ "<textarea class='description' id='description";
 				innerContext = innerContext +i;
 				innerContext = innerContext +"'></textarea>";
-				
-				innerContext = innerContext +"<input class='imageid' id='imageid";
+
+								innerContext = innerContext
+										+ "<input class='imageid' id='imageid";
 				innerContext = innerContext +i;
 				innerContext = innerContext +"'>";
-				
-				innerContext = innerContext +"<button class='updateformbutton' id='updateformbutton";
+
+								innerContext = innerContext
+										+ "<button class='updateformbutton' id='updateformbutton";
 				innerContext = innerContext +i;
 				innerContext = innerContext +"'>提交新的表单</button>";
-				
-				
-				innerContext = innerContext + "</div>";
-				innerContext = innerContext + "<br>";		
-				;
-			}
-			document.getElementById('showitems').innerHTML = innerContext;
-		});
+
+								innerContext = innerContext + "</div>";
+								innerContext = innerContext + "<br>";
+								;
+							}
+							document.getElementById('showitems').innerHTML = innerContext;
+						});
 		for (i = 0; i < httpresponse.liebiao.length; i++) {
 			setliebiaodeletebutton(i);
 			setliebiaoupdatebutton(i);
@@ -168,70 +179,83 @@ $.ajaxSetup({
 			setupdateformbutton(i);
 		}
 	}
-	function setliebiaodeletebutton(i){
-		var buttonname="deletebutton";
-		buttonname=buttonname+i;
-		document.getElementById(buttonname).addEventListener('click',
-			function() {
-				alert("本条被删除列表id为:"+httpresponse.liebiao[i]._id);
-				$.post('/deleteliebiaobyid', {oneitemid:httpresponse .liebiao[i]._id }, function(res) {
-					alert(res.status);
-				});
-			});
-	}
-	function setliebiaoupdatebutton(i){
-		var buttonname="updatebutton";
-		buttonname=buttonname+i;
-		var buttonname2="updateoneitem";
-		buttonname2=buttonname2+i;
-		document.getElementById(buttonname).addEventListener('click',
-			function() {
-				alert("显示右边更新列表id为:"+httpresponse.liebiao[i]._id);
-				document.getElementById(buttonname2).style.visibility="visible";
-			});
-	}
-	function setliebiaoupdateform(i){
-		var buttonname="selectforweight";
-		buttonname=buttonname+i;
-		document.getElementById(buttonname).value=httpresponse.liebiao[i].oneitem.weight;
-		var buttonname2="title";
-		buttonname2=buttonname2+i;
-		document.getElementById(buttonname2).value=httpresponse.liebiao[i].oneitem.title;
-		var buttonname3="description";
-		buttonname3=buttonname3+i;
-		document.getElementById(buttonname3).value=httpresponse.liebiao[i].oneitem.description;
-		var buttonname4="imageid";
-		buttonname4=buttonname4+i;
-		document.getElementById(buttonname4).value=httpresponse.liebiao[i].oneitem.imageid;
-	}
-	function setupdateformbutton(i){
-	
-		var buttonname ="updateformbutton";
-		buttonname= buttonname+i;
+	function setliebiaodeletebutton(i) {
+		var buttonname = "deletebutton";
+		buttonname = buttonname + i;
 		document.getElementById(buttonname).addEventListener('click',
 				function() {
-					var buttonname1 ="selectforweight";
-					buttonname1= buttonname1+i;
-					var buttonname2 ="title";
-					buttonname2= buttonname2+i;
-					var buttonname3 ="description";
-					buttonname3= buttonname3+i;
-					var buttonname4 ="imageid";
-					buttonname4= buttonname4+i;
-					$.post('/updateliebiaobyid', {
-						oneitemid:httpresponse.liebiao[i]._id,
-						weight:document.getElementById(buttonname1).value,
-						title:document.getElementById(buttonname2).value,
-						description:document.getElementById(buttonname3).value,
-						imageid:document.getElementById(buttonname4).value
-						}, function(res) {
+					alert("本条被删除列表id为:" + httpresponse.liebiao[i]._id);
+					$.post('/deleteliebiaobyid', {
+						oneitemid : httpresponse.liebiao[i]._id
+					}, function(res) {
 						alert(res.status);
 					});
 				});
-		
-		
 	}
-	
+	function setliebiaoupdatebutton(i) {
+		var buttonname = "updatebutton";
+		buttonname = buttonname + i;
+		var buttonname2 = "updateoneitem";
+		buttonname2 = buttonname2 + i;
+		document
+				.getElementById(buttonname)
+				.addEventListener(
+						'click',
+						function() {
+							alert("显示右边更新列表id为:" + httpresponse.liebiao[i]._id);
+							document.getElementById(buttonname2).style.visibility = "visible";
+						});
+	}
+	function setliebiaoupdateform(i) {
+		var buttonname = "selectforweight";
+		buttonname = buttonname + i;
+		document.getElementById(buttonname).value = httpresponse.liebiao[i].oneitem.weight;
+		var buttonname2 = "title";
+		buttonname2 = buttonname2 + i;
+		document.getElementById(buttonname2).value = httpresponse.liebiao[i].oneitem.title;
+		var buttonname3 = "description";
+		buttonname3 = buttonname3 + i;
+		document.getElementById(buttonname3).value = httpresponse.liebiao[i].oneitem.description;
+		var buttonname4 = "imageid";
+		buttonname4 = buttonname4 + i;
+		document.getElementById(buttonname4).value = httpresponse.liebiao[i].oneitem.imageid;
+	}
+	function setupdateformbutton(i) {
+
+		var buttonname = "updateformbutton";
+		buttonname = buttonname + i;
+		document
+				.getElementById(buttonname)
+				.addEventListener(
+						'click',
+						function() {
+							var buttonname1 = "selectforweight";
+							buttonname1 = buttonname1 + i;
+							var buttonname2 = "title";
+							buttonname2 = buttonname2 + i;
+							var buttonname3 = "description";
+							buttonname3 = buttonname3 + i;
+							var buttonname4 = "imageid";
+							buttonname4 = buttonname4 + i;
+							$
+									.post(
+											'/updateliebiaobyid',
+											{
+												oneitemid : httpresponse.liebiao[i]._id,
+												weight : document
+														.getElementById(buttonname1).value,
+												title : document
+														.getElementById(buttonname2).value,
+												description : document
+														.getElementById(buttonname3).value,
+												imageid : document
+														.getElementById(buttonname4).value
+											}, function(res) {
+												alert(res.status);
+											});
+						});
+
+	}
 </script>
 
 </html>
