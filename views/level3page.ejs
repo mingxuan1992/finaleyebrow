@@ -304,7 +304,7 @@ body {
 			document.getElementById('realdisplaytitle').innerHTML = "PROMOTION";
 			break;
 		default:
-
+			document.getElementById('realdisplaytitle').innerHTML = "";
 		}
 
 	}
@@ -314,39 +314,46 @@ body {
 
 	setcontext();
 	function setcontext() {
-		$.post('/getliebiaobyid', {
-			oneitemid : document.getElementById('title').innerHTML
-		}, function(res) {
+		$
+				.post(
+						'/getliebiaobyid',
+						{
+							oneitemid : document.getElementById('title').innerHTML
+						},
+						function(res) {
 
-			var innerContext = "";
-			innerContext = innerContext + "<div class='oneitemtitle'>";
-			innerContext = innerContext + res.liebiao[0].oneitem.title;
-			innerContext = innerContext + "</div>";
-			innerContext = innerContext + "<div class='oneitemdescription'>";
-			innerContext = innerContext + res.liebiao[0].oneitem.description;
-			innerContext = innerContext + "</div>";
-			var str = res.liebiao[0].oneitem.imageid;
-			var result = str.split(",");
-			for (i = 0; i < result.length; i++) {
-				innerContext = innerContext + "<div class='oneitemimageplace' id='image";
+							var innerContext = "";
+							innerContext = innerContext
+									+ "<div class='oneitemtitle'>";
+							innerContext = innerContext
+									+ res.liebiao[0].oneitem.title;
+							innerContext = innerContext + "</div>";
+							innerContext = innerContext
+									+ "<div class='oneitemdescription'>";
+							innerContext = innerContext
+									+ res.liebiao[0].oneitem.description;
+							innerContext = innerContext + "</div>";
+							var str = res.liebiao[0].oneitem.imageid;
+							var result = str.split(",");
+							for (i = 0; i < result.length; i++) {
+								innerContext = innerContext
+										+ "<div class='oneitemimageplace' id='image";
 				innerContext = innerContext + i;
 				innerContext = innerContext +"'>";
-				innerContext = innerContext + "</div>";
-				setimage(i,result[i]);
-			}
+								innerContext = innerContext + "</div>";
+								setimage(i, result[i]);
+							}
 
-			
-			document.getElementById('context').innerHTML = innerContext;
+							document.getElementById('context').innerHTML = innerContext;
+							alert(res.liebiao[0].oneitem.category);
+							changedisplaytitletochinese(res.liebiao[0].oneitem.category);
 
-			changedisplaytitletochinese(res.liebiao[0].oneitem.category);
+						}
 
-
-		}
-
-		)
+				)
 	}
 
-	function setimage(i,imageid) {
+	function setimage(i, imageid) {
 
 		$
 				.ajax({
@@ -362,7 +369,7 @@ body {
 							var imagestring = 'data:image/png;base64,'
 									+ res.image;
 							var idname = "image";
-							idname=idname +i;
+							idname = idname + i;
 							innerContext = innerContext
 									+ "<img class='imageview' src=";
 					innerContext=innerContext+ imagestring;

@@ -337,11 +337,9 @@ body {
 							httpresponse = res;
 							var innerContext = "";
 							var imagestring = "";
-							if (res.liebiao.length < 3) {
-								times = res.liebiao.length;
-							} else {
-								times = 3;
-							}
+
+							times = res.liebiao.length;
+
 							for (var i = 0; i < times; i++) {
 								innerContext = innerContext
 										+ "<div class='oneitem' id='oneitem";
@@ -367,7 +365,7 @@ body {
 								if (result.length < imagecount) {
 									imagecount = result.length;
 								}
-								
+
 								for (j = 0; j < imagecount; j++) {
 									innerContext = innerContext
 											+ "<div class='imageplace' id='image";

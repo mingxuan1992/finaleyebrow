@@ -464,14 +464,14 @@ $.ajaxSetup({
 	
 <!-- fill items -->
 
-
-	
+	var times;
+	var httpresponse;
 	showall();
 	function showall() {
 		$.post('/getindexpageitems', {}, function(res) {
 	
-			var times;
 			
+			httpresponse=res;
 			
 			
 			if (res.items.zhuye.length<8){
@@ -480,10 +480,11 @@ $.ajaxSetup({
 				times=8;
 			}
 			
-			
 			var innerContext = "";
 			for (var i = 0; i < times; i++) {	
-				innerContext= innerContext+ "<div class='showcase'>";
+				innerContext= innerContext+ "<div class='showcase' id='showcase";
+				innerContext= innerContext+ i;
+				innerContext= innerContext+ "'>";
 				innerContext= innerContext+ "<div class='zhuyeimageplace' id='image";
 				innerContext= innerContext+	"zhuye";
 				innerContext= innerContext+i;
@@ -510,7 +511,10 @@ $.ajaxSetup({
 			
 			var innerContext = "";
 			for (var i = 0; i < times; i++) {	
-				innerContext= innerContext+ "<div class='oneitem'>";
+			
+				innerContext= innerContext+ "<div class='oneitem' id='xiangmuclick";
+				innerContext= innerContext+ i;
+				innerContext= innerContext+ "'>";
 				innerContext= innerContext+ "<div class='imageplace' id='image";
 				innerContext= innerContext+	"xiangmu";
 				innerContext= innerContext+ i;
@@ -530,9 +534,16 @@ $.ajaxSetup({
 			document.getElementById("xiangmu").innerHTML = innerContext;
 			
 			
+			if (res.items.kecheng.length<3){
+				times=res.items.kecheng.length;
+			}else{
+				times=3;
+			}
 			var innerContext = "";
 			for (var i = 0; i < times; i++) {	
-				innerContext= innerContext+ "<div class='oneitem'>";
+				innerContext= innerContext+ "<div class='oneitem' id='kechengclick";
+				innerContext= innerContext+ i;
+				innerContext= innerContext+ "'>";
 				innerContext= innerContext+ "<div class='imageplace' id='image";
 				innerContext= innerContext+	"kecheng";
 				innerContext= innerContext+ i;
@@ -551,10 +562,17 @@ $.ajaxSetup({
 			}
 			document.getElementById("kecheng").innerHTML = innerContext;
 			
+			if (res.items.zuopin.length<3){
+				times=res.items.zuopin.length;
+			}else{
+				times=3;
+			}
 			
 			var innerContext = "";
 			for (var i = 0; i < times; i++) {	
-				innerContext= innerContext+ "<div class='oneitem'>";
+				innerContext= innerContext+ "<div class='oneitem' id='zuopinclick";
+				innerContext= innerContext+ i;
+				innerContext= innerContext+ "'>";
 				innerContext= innerContext+ "<div class='imageplace' id='image";
 				innerContext= innerContext+	"zuopin";
 				innerContext= innerContext+ i;
@@ -580,7 +598,55 @@ $.ajaxSetup({
 	
 	}
 	
+<!-- setlink --> 
 
+if (httpresponse.items.zhuye.length<8){
+	times=httpresponse.items.zhuye.length;
+}else{
+	times=8;
+}
+for (var i = 0; i < times; i++) {	
+	setlink("showcase"+i,httpresponse.items.zhuye[i]._id);
+}
+
+if (httpresponse.items.xiangmu.length<8){
+	times=httpresponse.items.xiangmu.length;
+}else{
+	times=8;
+}
+for (var i = 0; i < times; i++) {	
+	setlink("xiangmuclick"+i,httpresponse.items.xiangmu[i]._id);
+}
+
+if (httpresponse.items.kecheng.length<8){
+	times=httpresponse.items.kecheng.length;
+}else{
+	times=8;
+}
+for (var i = 0; i < times; i++) {	
+	setlink("kechengclick"+i,httpresponse.items.kecheng[i]._id);
+}
+
+if (httpresponse.items.zuopin.length<8){
+	times=httpresponse.items.zuopin.length;
+}else{
+	times=8;
+}
+for (var i = 0; i < times; i++) {	
+	setlink("zuopinclick"+i,httpresponse.items.zuopin[i]._id);
+}
+
+
+
+function setlink(idname,liebiaoid){
+	document.getElementById(idname).addEventListener('click', function() {
+		window.location.assign('/level3page/'+liebiaoid);
+	});
+	
+}
+	
+	
+	
 	
 <!-- setimage-->
 	
