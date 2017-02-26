@@ -244,6 +244,10 @@ body {
 			<div class="leftbutton" id="promotag">Promo</div>
 			<div class="leftbutton" id="resumetag">Resume</div>
 			<div class="leftbutton" id="contacttag">Contact</div>
+			<div class="leftbutton" id="xiangmutag">经营项目</div>
+			<div class="leftbutton" id="kechengtag">学员课程</div>
+			<div class="leftbutton" id="zuopintag">作品展示</div>
+
 		</div>
 		<div class="right">
 			<div id="rightcontainer">
@@ -287,7 +291,16 @@ body {
 	document.getElementById('contacttag').addEventListener('click', function() {
 		window.location.assign('/contactpage');
 	});
-
+	document.getElementById('xiangmutag').addEventListener('click', function() {
+		window.location.assign('/level2page/xiangmu');
+	});
+	document.getElementById('kechengtag').addEventListener('click', function() {
+		window.location.assign('/level2page/kecheng');
+	});
+	document.getElementById('zuopintag').addEventListener('click', function() {
+		window.location.assign('/level2page/zuopin');
+	});
+	
 	function changedisplaytitletochinese(value) {
 
 		switch (value) {
@@ -345,7 +358,7 @@ body {
 							}
 
 							document.getElementById('context').innerHTML = innerContext;
-							alert(res.liebiao[0].oneitem.category);
+	
 							changedisplaytitletochinese(res.liebiao[0].oneitem.category);
 
 						}

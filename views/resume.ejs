@@ -168,8 +168,6 @@ body {
 	float: left;
 }
 
-
-
 #body .right #rightcontainer #zhuyingxiangmutitle {
 	margin: 20px 0 0 0;
 	font-size: 20px;
@@ -178,6 +176,7 @@ body {
 	width: 490px;
 	line-height: 30px
 }
+
 #body .right #rightcontainer #dot {
 	margin: 0 0 0 0;
 	font-size: 20px;
@@ -187,6 +186,7 @@ body {
 	width: 20px;
 	line-height: 30px
 }
+
 #body .right #rightcontainer #neirong {
 	margin: 0 0 0 0;
 	font-size: 20px;
@@ -237,6 +237,9 @@ body {
 			<div class="leftbutton" id="promotag">Promo</div>
 			<div class="leftbutton" id="resumetag">Resume</div>
 			<div class="leftbutton" id="contacttag">Contact</div>
+			<div class="leftbutton" id="xiangmutag">经营项目</div>
+			<div class="leftbutton" id="kechengtag">学员课程</div>
+			<div class="leftbutton" id="zuopintag">作品展示</div>
 		</div>
 		<div class="right">
 			<div id="rightcontainer">
@@ -244,9 +247,14 @@ body {
 					<img src='/images/resumeimage_Fotor.jpg' alt="resume">
 				</div>
 				<div id="title">Resume</div>
-				
+
 				<div id="zhuyingxiangmutitle">Cherry Liu（小瑞）</div>
-				<div id="dot"><br>-<br>-<br>-<br>-<br>-<br>-<br>-<br>-<br><br>-<br>-<br>-<br><br>-<br><br>-</div>
+				<div id="dot">
+					<br>-<br>-<br>-<br>-<br>-<br>-<br>-<br>-<br>
+					<br>-<br>-<br>-<br>
+					<br>-<br>
+					<br>-
+				</div>
 				<div id="neirong">
 					<br>抗衰老领域专家<br> 国家高级化妆师<br> 英国ITEC认证国际纹绣师 <br>英国ITEC认证国际美容师 <br>英国ITEC认证国际美体师<br> 韩国半永久协会高级讲师 <br>韩国IFBC半永久国际大赛特邀评委<br> 英国ITEC国际认证（Beauty forever leaning hub） 纹绣教师 <br>北京军地医学院 医疗美容专业 学士<br> 2016国际中华纹绣名师全能大赛冠军 <br>My eyebrow新加坡SCK悦妍国际美妆创始人/首席定妆师 <br>Beist国际容貌管理有限公司—开运面相学顾问/烟霏眉 技术总监 <br>北京品致美妆造型培训特约讲师
 				</div>
@@ -278,6 +286,15 @@ body {
 	});
 	document.getElementById('contacttag').addEventListener('click', function() {
 		window.location.assign('/contactpage');
+	});
+	document.getElementById('xiangmutag').addEventListener('click', function() {
+		window.location.assign('/level2page/xiangmu');
+	});
+	document.getElementById('kechengtag').addEventListener('click', function() {
+		window.location.assign('/level2page/kecheng');
+	});
+	document.getElementById('zuopintag').addEventListener('click', function() {
+		window.location.assign('/level2page/zuopin');
 	});
 </script>
 
